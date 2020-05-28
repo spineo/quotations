@@ -28,7 +28,7 @@ As mentioned, in the interest of making this a _simple_ Web Application, below a
 > ethicist, who employed nonviolent resistance to lead the successful campaign for India's independence from British Rule, 
 > and in turn inspire movements for civil rights and freedom across the world (source: extract from [Wikipedia](https://en.wikipedia.org/wiki/Mahatma_Gandhi))
 
-1. Refreshing the home page displays the next-most relevant quote (or, if none available, one based on keyword relevance). Still on _detail_ view, an example keyword-relevant quotation using the current month might be the one below if a specific-date context is not available:
+2. Refreshing the home page displays the next-most relevant quote (or, if none available, one based on keyword relevance). Still on _detail_ view, an example keyword-relevant quotation using the current month might be the one below if a specific-date context is not available:
 
 > "As full of spirit as the month of May, and as gorgeous as the sun in Midsummer" - William Shakespeare
 >
@@ -38,7 +38,7 @@ As mentioned, in the interest of making this a _simple_ Web Application, below a
 > sonnets, two long narrative poems, and a few other verses, some of uncertain authorship. His plays have been translated 
 > into every major living language and are performed more often than those of any other playwright (source: extract from [Wikipedia](https://en.wikipedia.org/wiki/William_Shakespeare))
 
-1. A search field allows a user to enter a search term and return a list (ordered by relevance) of quotations associated with that term. The number returned can be specified from a selection widget (i.e., in increments of 5 or 10). This is our _list_ view that shows only the quotation and author associated with each returned item along with a link to the _detail_ view (that includes the author bio as showbn above)
+3. A search field allows a user to enter a search term and return a list (ordered by relevance) of quotations associated with that term. The number returned can be specified from a selection widget (i.e., in increments of 5 or 10). This is our _list_ view that shows only the quotation and author associated with each returned item along with a link to the _detail_ view (that includes the author bio as showbn above)
 
 That's it for use cases (at least for now)
 
