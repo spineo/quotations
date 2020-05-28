@@ -19,18 +19,16 @@ This project is still evolving but my initial specification will include the fol
 ## Description
 
 As mentioned, in the interest of making this a _simple_ Web Application, below are my initial use cases:
-* The home page by default displays the most relevant quote associated with the current date along with a bio about the author (if no date-specific relevance is found, an association derived from keyword relevance is made)
-An example date-relevant quotation might be the one below if the current date is October 2nd:
+
+* The home page by default displays the most relevant quote associated with the current date along with a bio about the author (if no date-specific relevance is found, an association derived from keyword relevance is made). This is our _detail_ view. An example date-relevant quotation and bio might be the one below if the current date is October 2nd:
 
 > "The future depends on what we do in the present." - Mahatma Gandhi
 >
 > Mohandas Karamchand Gandhi, born on this day 1869, was an Indian lawyer, anti-colonial nationalist, and political
 > ethicist, who employed nonviolent resistance to lead the successful campaign for India's independence from British Rule, 
-> and in turn inspire movements for civil rights and freedom across the world (source: extract from Wikipedia)
+> and in turn inspire movements for civil rights and freedom across the world (source: extract from [Wikipedia](https://en.wikipedia.org/wiki/Mahatma_Gandhi))
 
-
-* Refreshing the home page displays the next-most relevant quote (or, if none available, one based on keyword relevance)
-An example keyword-relevant quotation might be the one below if the specific-date context is not available but the month is:
+* Refreshing the home page displays the next-most relevant quote (or, if none available, one based on keyword relevance). Still on _detail_ view, an example keyword-relevant quotation using the current month might be the one below if a specific-date context is not available:
 
 > "As full of spirit as the month of May, and as gorgeous as the sun in Midsummer" - William Shakespeare
 >
@@ -38,5 +36,10 @@ An example keyword-relevant quotation might be the one below if the specific-dat
 > the greatest writer in the English language and the world's greatest dramatist. He is often called England's national poet 
 > and the "Bard of Avon" (or simply "the Bard"). His extant works, including collaborations, consist of some 39 plays, 154 
 > sonnets, two long narrative poems, and a few other verses, some of uncertain authorship. His plays have been translated 
-> into every major living language and are performed more often than those of any other playwright (source: extract from Wikipedia)
+> into every major living language and are performed more often than those of any other playwright (source: extract from [Wikipedia](https://en.wikipedia.org/wiki/William_Shakespeare))
+
+* A search field allows a user to enter a search term and return a list (ordered by relevance) of quotations associated with that term. The number returned can be specified from a selection widget (i.e., in increments of 5 or 10). This is our _list_ view that shows only the quotation and author associated with each returned item along with a link to the detailed view (that includes the author bio)
+
+That's it for now!
+
 
