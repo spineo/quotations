@@ -52,8 +52,9 @@ Our first draft of the schema or _Entity-Relation Diagram (ERD)_ might look like
 
 ![Quotations ERD](images/quotations_erd.png)
 
+In a real query we may get zero or more events associated with a date (in the case of zero, we might pull in event(s) by associating month or season to today's date). With multiple events, we might give precedence to those events tied to an author as oppposed to just a keyword (though even a single author might have multiple quotations so we would need to decide which one to display)
 
-## Schema
+In the ideal world, a tie breaker might best be broken by pulling in some currently _trending topics_ (perhaps something for version 2.0 of this app!)
 
 ## Web Automation Tools
 
