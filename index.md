@@ -62,7 +62,7 @@ The purpose of these tools is to pull raw data when possible. Much of the data "
 
 ## Web Framework
 
-As mentioned, the Web Framework used with be [Djanog](https://www.djangoproject.com) which is implemented with Python.
+As mentioned, the Web Framework used with be [Django](https://www.djangoproject.com) which is implemented with Python.
 
 ## Data Loader Scripts
 
