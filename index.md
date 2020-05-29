@@ -42,7 +42,16 @@ As mentioned, in the interest of making this a _simple_ Web Application, below a
 
 That's it for use cases (at least for now)
 
-## Data Elements
+## Data Elements and Schema
+
+1. The Starting point is cataloging a series of _Events_ and their associated _Dates_ and/or _Seasons_ (from the event _Author_ and/or _Keywords_ relations we will find the most relevant quotation(s))
+2. The _Quotations_ and _Authors_ (as well as any _Context_ associated with each quotation) are of course stored. As we discussed, an author has certain attributes associated with him/her such as _Birth/Death Date_ and _Bio_ information. The quotation might also have one or more _Keywords_ associated with it which can tie it to events or user initiated queries.
+3. Finally, we want to keep track of when the quotation was last shown and thus prevent it from being re-displayed when user refreshes the browser (unless it is included in the returned list of a user initiated search)
+
+Our first draft of the schema or _Entity-Relation Diagram (ERD)_ might look like the one below:
+
+![Quotations ERD](images/quotations_erd.png)
+
 
 ## Schema
 
@@ -51,3 +60,7 @@ That's it for use cases (at least for now)
 ## Web Framework
 
 ## Data Loader Scripts
+
+## References
+
+* https://app.lucidchart.com/ (Great App for creating ERD diagrams)
