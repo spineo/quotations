@@ -70,8 +70,6 @@ Darkness cannot drive out darkness: only light can do that. Hate cannot drive ou
 We accept the love we think we deserve.###Stephen Chbosky,
 ```
 
-The fields delimiter is configurable (though to eliminate conflicts, more than one character, as I used, is preferable)
-
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
 ## Web Framework
