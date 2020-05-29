@@ -58,10 +58,15 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 ## Web Automation Tools
 
+The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
+
 ## Web Framework
+
+As mentioned, the Web Framework used with be [Djanog](https://www.djangoproject.com) which is implemented with Python.
 
 ## Data Loader Scripts
 
 ## References
 
 * https://app.lucidchart.com/ (Great App for creating ERD diagrams)
+* https://www.djangoproject.com
