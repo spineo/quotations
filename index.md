@@ -60,7 +60,7 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created a generic Web automation script in my [Perl Scripts](https://github.com/spineo/perl-scripts/bin) GitHub repository and a shell wrapper (for site specific settings) to pull a few thousand quotations/authors from one or more sites. A short extract from this raw data is shown below:
+I have created as generic as possible for Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [Perl Scripts](https://github.com/spineo/perl-scripts/) GitHub repository and a shell wrapper in the same directory (for site specific settings) to pull a few thousand quotations/authors from one or more sites. A short extract from the raw data generated is shown below:
 
 ```
 You've gotta dance like there's nobody watching,###William W. Purkey
