@@ -60,6 +60,16 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
+I have created a generic Web automation script in my [Perl Scripts](https://github.com/spineo/perl-scripts/bin) GitHub repository and a shell wrapper (for site specific settings) to pull a few thousand quotations/authors from one or more sites. A short extract from this raw data is shown below:
+
+> You've gotta dance like there's nobody watching,###William W. Purkey
+> You know you're in love when you can't fall asleep because reality is finally better than your dreams.###Dr. Seuss
+> A friend is someone who knows all about you and still loves you.###Elbert Hubbard
+> Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.###Martin Luther King Jr.,
+> We accept the love we think we deserve.###Stephen Chbosky,
+
+
+
 ## Web Framework
 
 As mentioned, the Web Framework used with be [Django](https://www.djangoproject.com) which is implemented with Python.
@@ -68,5 +78,6 @@ As mentioned, the Web Framework used with be [Django](https://www.djangoproject.
 
 ## References
 
-* https://app.lucidchart.com/ (Great App for creating ERD diagrams)
+* https://app.lucidchart.com/ (great App for creating ERD diagrams)
 * https://www.djangoproject.com
+* https://www.goodreads.com/quotes/ (thousands of quotes, categorized by topic)
