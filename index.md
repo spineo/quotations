@@ -60,7 +60,7 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created as generic as possible for Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [Perl Scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand quotations/authors from one or more sites as well as an optional "source" (for this site, usually a book reference). A short extract from the raw data generated is shown below:
+I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand quotations/authors from one or more sites as well as an optional "source" (for this site, usually a book reference). A short extract from the raw data generated is shown below:
 
 ```
 You've gotta dance like there's nobody watching###William W. Purkey###
@@ -70,7 +70,7 @@ Darkness cannot drive out darkness: only light can do that. Hate cannot drive ou
 We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower
 ```
 
-The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](conf/get_quotes.site.template) is checked into the _conf_ directory of this repository. 
+The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. 
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
