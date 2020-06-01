@@ -60,17 +60,17 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand quotations/authors from one or more sites as well as an optional "source" (for this site, usually a book reference). A short extract from the raw data generated is shown below:
+I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _tags_ (corresponding to "keywords" in the ERD). A short extract from the raw data generated is shown below:
 
 ```
-You've gotta dance like there's nobody watching###William W. Purkey###
-You know you're in love when you can't fall asleep because reality is finally better than your dreams.###Dr. Seuss###
-A friend is someone who knows all about you and still loves you.###Elbert Hubbard###
-Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.###Martin Luther King Jr.###A Testament of Hope: The Essential Writings and Speeches
-We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower
+You've gotta dance like there's nobody watching###William W. Purkey######dance,heaven,hurt,inspirational,life,love,sing
+You know you're in love when you can't fall asleep because reality is finally better than your dreams.###Dr. Seuss######attributed-no-source,dreams,love,reality,sleep
+A friend is someone who knows all about you and still loves you.###Elbert Hubbard######friend,friendship,knowledge,love
+Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.###Martin Luther King Jr.###A Testament of Hope: The Essential Writings and Speeches###darkness,drive-out,hate,inspirational,light,love,peace
+We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower###inspirational,love
 ```
 
-The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. 
+The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository.
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
