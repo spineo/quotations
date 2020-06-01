@@ -70,7 +70,7 @@ Darkness cannot drive out darkness: only light can do that. Hate cannot drive ou
 We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower###inspirational,love
 ```
 
-The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository.
+The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
