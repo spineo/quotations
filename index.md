@@ -58,6 +58,8 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 ## Web Automation Tools
 
+### Get the Quotes
+
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
 I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _tags_ (corresponding to "keywords" in the ERD). A short extract from the raw data generated is shown below:
@@ -73,6 +75,53 @@ We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a
 The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
+
+### Filtering the Quotes
+
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. Below is a sample extract of the parsed data:
+```
+          {
+            'name' => 'Abraham Lincoln',
+            'death_date' => 'April 15, 1865',
+            'title' => 'President',
+            'birth_date' => 'February 12, 1809',
+            'origin' => 'American',
+            'bio_url' => 'https://www.brainyquote.com/quotes/biography/abraham-lincoln-biography'
+          },
+          {
+            'birth_date' => 'February 27, 1807',
+            'title' => 'Poet',
+            'death_date' => 'March 24, 1882',
+            'name' => 'Henry Wadsworth Longfellow',
+            'bio_url' => 'N/A',
+            'origin' => 'American'
+          },
+          {
+            'title' => 'Sicangu and Oglala Lakota Chief',
+            'death_date' => 'February 20, 1939',
+            'name' => 'Luther Standing Bear',
+            'birth_date' => 'December 1868',
+            'origin' => 'American',
+            'bio_url' => 'https://en.wikipedia.org/wiki/Luther_Standing_Bear'
+          },
+          {
+            'bio_url' => 'N/A',
+            'origin' => 'Indian',
+            'birth_date' => 'December 30, 1879',
+            'death_date' => 'April 14, 1950',
+            'title' => 'Philosopher',
+            'name' => 'Ramana Maharshi'
+          },
+          {
+            'title' => 'Musician',
+            'death_date' => 'May 11, 1981',
+            'name' => 'Bob Marley',
+            'birth_date' => 'February 6, 1945',
+            'origin' => 'Jamaican',
+            'bio_url' => 'N/A'
+          },
+```
+
 
 ## Web Framework
 
