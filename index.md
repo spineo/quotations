@@ -78,9 +78,9 @@ Note: Make sure that extraction of content does not infringe on copyrights (espe
 
 ### Filtering the Quotes
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. The [filter_quotes.pl](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/stripped full name and applies it to the quotes file:
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. The [filter_quotes.pl](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/dash-separated/stripped full name and applies it to the quotes file:
 ```
-          'marktwain' => {
+          'mark-twain' => {
                            'lname_sig' => 'twain',
                            'birth_date' => 'November 30, 1835',
                            'title' => 'Author',
@@ -89,7 +89,7 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                            'origin' => 'American',
                            'bio_url' => 'https://www.brainyquote.com/quotes/biography/mark-twain-biography'
                          },
-          'henrydavidthoreau' => {
+          'henry-david-thoreau' => {
                                    'name' => 'Henry David Thoreau',
                                    'death_date' => 'May 6, 1862',
                                    'origin' => 'American',
@@ -98,7 +98,7 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                                    'birth_date' => 'July 12, 1817',
                                    'lname_sig' => 'thoreau'
                                  },
-          'winstonchurchill' => {
+          'winston-churchill' => {
                                   'name' => 'Winston Churchill',
                                   'death_date' => 'January 24, 1965',
                                   'origin' => 'British',
@@ -107,7 +107,7 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                                   'birth_date' => 'November 30, 1874',
                                   'lname_sig' => 'churchill'
                                 },
-          'stevejobs' => {
+          'steve-jobs' => {
                            'death_date' => 'October 5, 2011',
                            'name' => 'Steve Jobs',
                            'origin' => 'American',
@@ -116,7 +116,7 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                            'birth_date' => 'February 24, 1955',
                            'title' => 'Businessman'
                          },
-          'martinlutherking' => {
+          'martin-luther-king' => {
                                   'birth_date' => 'January 15, 1929',
                                   'title' => 'Christian Minister and Activist',
                                   'lname_sig' => 'king',
@@ -127,6 +127,76 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                                 },
 ```
 
+Pretty printed output for one author is shown below:
+```
+          'albert-einstein' => {
+                                 'birth_date' => 'March 14, 1879',
+                                 'name' => 'Albert Einstein',
+                                 'title' => 'Physicist',
+                                 'death_date' => 'April 18, 1955',
+                                 'lname_sig' => 'einstein',
+                                 'quotes' => [
+                                               {
+                                                 'source' => 'Ideas and Opinions',
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Student is not a container you have to fill but a torch you have to light up.',
+                                                 'tags' => 'albert-einstein,quote'
+                                               },
+                                               {
+                                                 'source' => '',
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Anyone who doesn\'t take truth seriously in small matters cannot be trusted in large ones either.',
+                                                 'tags' => 'albert-einstein,truth'
+                                               },
+                                               {
+                                                 'tags' => 'advice,albert-einstein',
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Weak people revenge. Strong people forgive. Intelligent people ignore.',
+                                                 'source' => ''
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'In the midst of every crisis, lies great opportunity.',
+                                                 'source' => '',
+                                                 'tags' => 'albert-einstein,crisis,opportunity'
+                                               },
+                                               {
+                                                 'source' => '',
+                                                 'quote' => 'Racism is a disease of white people',
+                                                 'author' => 'Albert Einstein',
+                                                 'tags' => 'albert-einstein,civil-rights-movement,famous,racism,segregation'
+                                               },
+                                               {
+                                                 'tags' => 'aggravating,albert-einstein,generation,life,young,youth',
+                                                 'quote' => 'The most aggravating thing about the younger generation is that I no longer belong to it.',
+                                                 'author' => 'Albert Einstein',
+                                                 'source' => ''
+                                               },
+                                               {
+                                                 'tags' => '1901,1993,albert-einstein,paul-carter,roger-highfield',
+                                                 'source' => '',
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Autoritätsdusel ist der größte Feind der Wahrheit.'
+                                               },
+                                               {
+                                                 'source' => '',
+                                                 'quote' => 'Aku takut suatu hari teknologi akan melampaui interaksi manusia. Dunia akan memiliki generasi idiot',
+                                                 'author' => 'Albert Einstein',
+                                                 'tags' => 'albert-einstein'
+                                               },
+                                               {
+                                                 'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words',
+                                                 'quote' => 'It was my good fortune to be linked with',
+                                                 'author' => 'Albert Einstein',
+                                                 'tags' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength'
+                                               }
+                                             ],
+                                 'origin' => 'German',
+                                 'bio_url' => 'https://www.brainyquote.com/quotes/biography/albert-einstein-biography'
+                               },
+```
+
+Alternatively, the filtering script can output the author tags and have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
 
 ## Web Framework
 
