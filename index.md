@@ -78,48 +78,53 @@ Note: Make sure that extraction of content does not infringe on copyrights (espe
 
 ### Filtering the Quotes
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. Below is a sample extract of the parsed data:
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. The [filter_quotes.pl](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/stripped full name and applies it to the quotes file:
 ```
-          {
-            'name' => 'Abraham Lincoln',
-            'death_date' => 'April 15, 1865',
-            'title' => 'President',
-            'birth_date' => 'February 12, 1809',
-            'origin' => 'American',
-            'bio_url' => 'https://www.brainyquote.com/quotes/biography/abraham-lincoln-biography'
-          },
-          {
-            'birth_date' => 'February 27, 1807',
-            'title' => 'Poet',
-            'death_date' => 'March 24, 1882',
-            'name' => 'Henry Wadsworth Longfellow',
-            'bio_url' => 'N/A',
-            'origin' => 'American'
-          },
-          {
-            'title' => 'Sicangu and Oglala Lakota Chief',
-            'death_date' => 'February 20, 1939',
-            'name' => 'Luther Standing Bear',
-            'birth_date' => 'December 1868',
-            'origin' => 'American',
-            'bio_url' => 'https://en.wikipedia.org/wiki/Luther_Standing_Bear'
-          },
-          {
-            'bio_url' => 'N/A',
-            'origin' => 'Indian',
-            'birth_date' => 'December 30, 1879',
-            'death_date' => 'April 14, 1950',
-            'title' => 'Philosopher',
-            'name' => 'Ramana Maharshi'
-          },
-          {
-            'title' => 'Musician',
-            'death_date' => 'May 11, 1981',
-            'name' => 'Bob Marley',
-            'birth_date' => 'February 6, 1945',
-            'origin' => 'Jamaican',
-            'bio_url' => 'N/A'
-          },
+          'marktwain' => {
+                           'lname_sig' => 'twain',
+                           'birth_date' => 'November 30, 1835',
+                           'title' => 'Author',
+                           'death_date' => 'April 21, 1910',
+                           'name' => 'Mark Twain',
+                           'origin' => 'American',
+                           'bio_url' => 'https://www.brainyquote.com/quotes/biography/mark-twain-biography'
+                         },
+          'henrydavidthoreau' => {
+                                   'name' => 'Henry David Thoreau',
+                                   'death_date' => 'May 6, 1862',
+                                   'origin' => 'American',
+                                   'bio_url' => 'https://www.brainyquote.com/quotes/biography/henry-david-thoreau-biography',
+                                   'title' => 'Author',
+                                   'birth_date' => 'July 12, 1817',
+                                   'lname_sig' => 'thoreau'
+                                 },
+          'winstonchurchill' => {
+                                  'name' => 'Winston Churchill',
+                                  'death_date' => 'January 24, 1965',
+                                  'origin' => 'British',
+                                  'bio_url' => 'https://www.brainyquote.com/quotes/biography/winston-churchill-biography',
+                                  'title' => 'Statesman',
+                                  'birth_date' => 'November 30, 1874',
+                                  'lname_sig' => 'churchill'
+                                },
+          'stevejobs' => {
+                           'death_date' => 'October 5, 2011',
+                           'name' => 'Steve Jobs',
+                           'origin' => 'American',
+                           'bio_url' => 'https://www.brainyquote.com/quotes/biography/steve-jobs-biography',
+                           'lname_sig' => 'jobs',
+                           'birth_date' => 'February 24, 1955',
+                           'title' => 'Businessman'
+                         },
+          'martinlutherking' => {
+                                  'birth_date' => 'January 15, 1929',
+                                  'title' => 'Christian Minister and Activist',
+                                  'lname_sig' => 'king',
+                                  'name' => 'Martin Luther King Jr.',
+                                  'death_date' => 'April 4, 1968',
+                                  'bio_url' => 'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.',
+                                  'origin' => 'American'
+                                },
 ```
 
 
