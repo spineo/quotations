@@ -78,7 +78,7 @@ Note: Make sure that extraction of content does not infringe on copyrights (espe
 
 ### Filtering the Quotes
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. The [filter_quotes.pl](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/dash-separated/stripped full name and applies it to the quotes file:
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, worthy of my admiration, and that they had at least two quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio. The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/dash-separated/stripped full name and applies it to the quotes file:
 ```
           'mark-twain' => {
                            'lname_sig' => 'twain',
@@ -127,7 +127,7 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
                                 },
 ```
 
-Pretty printed output for one author is shown below:
+Pretty printed output for one author is shown below. A command-line option allows applying a filter by quote size (for this run any quote over 100 characters got tossed). Clearly a language filter (or translator) might also be useful!
 ```
           'albert-einstein' => {
                                  'birth_date' => 'March 14, 1879',
@@ -196,7 +196,7 @@ Pretty printed output for one author is shown below:
                                },
 ```
 
-Alternatively, the filtering script can output the author tags and have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
+Alternatively, the filtering script can output the author tags and then have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
 
 ## Web Framework
 
