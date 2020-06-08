@@ -226,6 +226,34 @@ Installing collected packages: pytz, asgiref, sqlparse, django
 Successfully installed asgiref-3.2.7 django-3.0.7 pytz-2020.1 sqlparse-0.3.1
 ```
 
+After the installation we can always confirm the version by running:
+```
+python3 -m django --version
+3.0.7
+```
+
+### Creating the Initial Project Structure
+
+Using the _django-admin_ utility allows to easily create our initial project structure. From our root git directory run:
+```
+django-admin startproject quotations .
+```
+In addition to the _manage,py_ (more on this later), the sub-directory _quotations_ will be created. Using the handy _tree_ command (run _brew install tree_ to install) we can examine the generated files under this directory which we will configure as the application evolves:
+```
+tree quotations/
+quotations/
+├── __init__.py
+├── asgi.py
+├── settings.py
+├── urls.py
+└── wsgi.py
+```
+
+
+### Mapping the ERD to _models.py_
+
+
+
 
 ## Data Loader Scripts
 
