@@ -204,7 +204,28 @@ As mentioned, the Web Framework used will be [Django](https://www.djangoproject.
 
 Since the setup, at least initially, is not geared to a heavy-weight and/or production environment I will skip the installation of Apache and mod_wsgi as suggested in the [installation](https://docs.djangoproject.com/en/3.0/topics/install/) instructions.
 
-Similarly, I will use SQLite as the database which already comes bundled with Django and should be adequately support our schema design and processing demands. Since SQLite does not effectively deal with concurrency, switching to a more powerfull database such as MySQL, MariaDB or PostgreSQL is recommended if application is made externally facing.
+Similarly, I will use [_SQLite_](https://www.sqlite.org/index.html) as the database which already comes bundled with Django and should be adequately support our schema design and processing demands. Since SQLite does not effectively deal with concurrency, switching to a more powerfull database such as MySQL, MariaDB or PostgreSQL is recommended if application is made externally facing.
+
+### Installing Django
+
+After installing _pip_ you can run the following command (output shown below):
+```
+python3 -m pip install django
+Collecting django
+  Downloading Django-3.0.7-py3-none-any.whl (7.5 MB)
+     |████████████████████████████████| 7.5 MB 4.3 MB/s 
+Collecting pytz
+  Downloading pytz-2020.1-py2.py3-none-any.whl (510 kB)
+     |████████████████████████████████| 510 kB 3.7 MB/s 
+Collecting asgiref~=3.2
+  Downloading asgiref-3.2.7-py2.py3-none-any.whl (19 kB)
+Collecting sqlparse>=0.2.2
+  Downloading sqlparse-0.3.1-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 4.3 MB/s 
+Installing collected packages: pytz, asgiref, sqlparse, django
+Successfully installed asgiref-3.2.7 django-3.0.7 pytz-2020.1 sqlparse-0.3.1
+```
+
 
 ## Data Loader Scripts
 
