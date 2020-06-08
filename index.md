@@ -232,13 +232,13 @@ python3 -m django --version
 3.0.7
 ```
 
-### Creating the Initial Project Structure
+### Creating the Initial Project and App Structure
 
 Using the _django-admin_ utility allows to easily create our initial project structure. From our root git directory run:
 ```
 django-admin startproject quotations .
 ```
-In addition to the _manage,py_ (more on this later), the sub-directory _quotations_ will be created. Using the handy _tree_ command (run _brew install tree_ to install) we can examine the generated files under this directory which we will configure as the application evolves:
+In addition to the _manage,py_ (more on this later), the sub-directory _quotations_, which is the actual Python package for the project, will be created. Using the handy _tree_ command (run _brew install tree_ to install) we can examine the generated files under this directory which we will configure as the application evolves:
 ```
 tree quotations/
 quotations/
@@ -249,9 +249,41 @@ quotations/
 └── wsgi.py
 ```
 
+We can now test, from the git root directory, that the basic project works by running:
+```
+python3 manage.py runserver
+```
+
+If startup goes well you should get the below message:
+```
+June 08, 2020 - 21:03:44
+Django version 3.0.7, using settings 'quotations.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C
+```
+
+Going to that [url](http://127.0.0.1:8000/) you should see a standard Django welcome page (in my case "The install worked successfully! Congratulations!"). To use a port other than the default one, you can run the same command with the target port at the end.
+
+
+Now we will run (from the root directory) the command to create the specific app which we will name _myquotes_ and which will contain our query/display code:
+```
+python3 manage.py startapp myquotes
+```
+
+Using our tree command, we verify the app structure:
+```
+myquotes/
+├── __init__.py
+├── admin.py
+├── apps.py
+├── migrations
+│   └── __init__.py
+├── models.py
+├── tests.py
+└── views.py
+```
 
 ### Mapping the ERD to _models.py_
-
 
 
 
