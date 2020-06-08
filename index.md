@@ -200,7 +200,11 @@ Alternatively, the filtering script can output the author tags and then have the
 
 ## Web Framework
 
-As mentioned, the Web Framework used with be [Django](https://www.djangoproject.com) which is implemented with Python.
+As mentioned, the Web Framework used will be [Django](https://www.djangoproject.com) which is implemented with Python. The application will be running on a Mac OS (Python v3.7.6 and Django v3.0)
+
+Since the setup, at least initially, is not geared to a heavy-weight and/or production environment I will skip the installation of Apache and mod_wsgi as suggested in the [installation](https://docs.djangoproject.com/en/3.0/topics/install/) instructions.
+
+Similarly, I will use SQLite as the database which already comes bundled with Django and should be adequately support our schema design and processing demands. Since SQLite does not effectively deal with concurrency, switching to a more powerfull database such as MySQL, MariaDB or PostgreSQL is recommended if application is made externally facing.
 
 ## Data Loader Scripts
 
