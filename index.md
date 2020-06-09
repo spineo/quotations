@@ -336,6 +336,7 @@ DATABASES = {
 }
 ```
 
+In this file, you can also change the default 'UTC' timezone if needed (in my case, I set _TIME_ZONE = 'US/Eastern'_). As we move along, we will make additional changes to this configuration file.
 
 ## Data Loader Scripts
 
