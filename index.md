@@ -283,6 +283,41 @@ myquotes/
 └── views.py
 ```
 
+Finally, before moving on to the models, lets test auto-generating a simple index file and verify that it works (like the standard Django tutorials suggest)
+
+Create a _myquotes/urls.py_ file and add the below code:
+```
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+```
+
+In the _myquotes/views.py_ add the below content:
+```
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("This is my test quotations index file.")
+```
+
+To integrate _myquotes_, in main _quotations/urls.py_ add the below code:
+```
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('myquotes/', include('myquotes.urls')),
+    path('admin/', admin.site.urls),
+]
+```
+
+Run the application as before (_python3 manage.py runserver_) and verify the new url rendering at http://127.0.0.1:8000/myquotes with the text you just added.
+
 ### Mapping the ERD to _models.py_
 
 
