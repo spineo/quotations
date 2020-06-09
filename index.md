@@ -338,6 +338,8 @@ DATABASES = {
 
 In this file, you can also change the default 'UTC' timezone if needed (in my case, I set _TIME_ZONE = 'US/Eastern'_). As we move along, we will make additional changes to this configuration file.
 
+In order to map our ERD created earlier to the database using the built-in Django Object Relation Mapping (ORM) we will edit the file _myquotes/models.py_ and include the classes (that subclass _django.db.models.Model_) and map to the database tables and the class variables, which map to the database fields.
+
 ## Data Loader Scripts
 
 ## References
