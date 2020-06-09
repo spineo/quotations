@@ -318,7 +318,22 @@ urlpatterns = [
 
 Run the application as before (_python3 manage.py runserver_) and verify the new url rendering at http://127.0.0.1:8000/myquotes with the text you just added.
 
-### Mapping the ERD to _models.py_
+### Setting up the Backend Database and Mapping the ERD to _models.py_
+
+By default, Django comes bundled with the SQLite database which we will use (at least initially). However, we will need to configure where the database file will be stored. To do this, edit the _quotations/settings.py_ file to include the below new _DATA_DIR_ references (the _data/myquotes.sqlite3_ file, initially empty, is checked into the git repository)
+
+```
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+
+...
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(DATA_DIR, 'myquotes.sqlite3'),
+    }
+}
 
 
 
