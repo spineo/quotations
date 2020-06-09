@@ -334,7 +334,7 @@ DATABASES = {
         'NAME': os.path.join(DATA_DIR, 'myquotes.sqlite3'),
     }
 }
-
+```
 
 
 ## Data Loader Scripts
