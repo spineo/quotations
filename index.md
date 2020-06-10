@@ -401,6 +401,84 @@ class EventKeyword(models.Model):
     keyword_id       = models.ManyToManyField(Keyword)
 ```
 
+We will now modified the [_quotations/settings.py_](quotations/settings.py) to include the 'myquotes' app we just defined in the list of _INSTALLED_APPS_:
+```
+INSTALLED_APPS = [
+    'myquotes',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the bellow output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py)
+```
+Migrations for 'myquotes':
+  myquotes/migrations/0001_initial.py
+    - Create model Author
+    - Create model Event
+    - Create model Keyword
+    - Create model Quotation
+    - Create model QuotationLastShown
+    - Create model QuotationKeyword
+    - Create model EventKeyword
+    - Create model EventAuthor
+```
+
+You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_:
+```
+BEGIN;
+--
+-- Create model Author
+--
+CREATE TABLE "myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "birth_date" date NOT NULL, "death_date" date NOT NULL, "bio_extract" varchar(400) NOT NULL, "bio_source_url" varchar(200) NOT NULL);
+--
+-- Create model Event
+--
+CREATE TABLE "myquotes_event" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "event" varchar(100) NOT NULL UNIQUE, "day" integer NULL, "month" varchar(9) NULL, "year" integer NULL, "season" varchar(6) NULL);
+--
+-- Create model Keyword
+--
+CREATE TABLE "myquotes_keyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "keyword" varchar(50) NOT NULL UNIQUE);
+--
+-- Create model Quotation
+--
+CREATE TABLE "myquotes_quotation" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotation" varchar(200) NOT NULL UNIQUE, "quotation_source" varchar(100) NULL, "author_id_id" integer NOT NULL REFERENCES "myquotes_author" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model QuotationLastShown
+--
+CREATE TABLE "myquotes_quotationlastshown" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "last_shown_date" date NOT NULL, "quotation_id_id" integer NOT NULL UNIQUE REFERENCES "myquotes_quotation" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model QuotationKeyword
+--
+CREATE TABLE "myquotes_quotationkeyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotation_id_id" integer NOT NULL UNIQUE REFERENCES "myquotes_quotation" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE TABLE "myquotes_quotationkeyword_keyword_id" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotationkeyword_id" integer NOT NULL REFERENCES "myquotes_quotationkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "keyword_id" integer NOT NULL REFERENCES "myquotes_keyword" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model EventKeyword
+--
+CREATE TABLE "myquotes_eventkeyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT);
+CREATE TABLE "myquotes_eventkeyword_event_id" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "eventkeyword_id" integer NOT NULL REFERENCES "myquotes_eventkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "event_id" integer NOT NULL REFERENCES "myquotes_event" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE TABLE "myquotes_eventkeyword_keyword_id" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "eventkeyword_id" integer NOT NULL REFERENCES "myquotes_eventkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "keyword_id" integer NOT NULL REFERENCES "myquotes_keyword" ("id") DEFERRABLE INITIALLY DEFERRED);
+--
+-- Create model EventAuthor
+--
+CREATE TABLE "myquotes_eventauthor" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "author_id_id" integer NOT NULL UNIQUE REFERENCES "myquotes_author" ("id") DEFERRABLE INITIALLY DEFERRED, "event_id_id" integer NOT NULL UNIQUE REFERENCES "myquotes_event" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "myquotes_quotation_author_id_id_e3ea6829" ON "myquotes_quotation" ("author_id_id");
+CREATE UNIQUE INDEX "myquotes_quotationkeyword_keyword_id_quotationkeyword_id_keyword_id_f03b0cc7_uniq" ON "myquotes_quotationkeyword_keyword_id" ("quotationkeyword_id", "keyword_id");
+CREATE INDEX "myquotes_quotationkeyword_keyword_id_quotationkeyword_id_171b6464" ON "myquotes_quotationkeyword_keyword_id" ("quotationkeyword_id");
+CREATE INDEX "myquotes_quotationkeyword_keyword_id_keyword_id_291df85f" ON "myquotes_quotationkeyword_keyword_id" ("keyword_id");
+CREATE UNIQUE INDEX "myquotes_eventkeyword_event_id_eventkeyword_id_event_id_74c7f66e_uniq" ON "myquotes_eventkeyword_event_id" ("eventkeyword_id", "event_id");
+CREATE INDEX "myquotes_eventkeyword_event_id_eventkeyword_id_0a656bca" ON "myquotes_eventkeyword_event_id" ("eventkeyword_id");
+CREATE INDEX "myquotes_eventkeyword_event_id_event_id_9215ad9c" ON "myquotes_eventkeyword_event_id" ("event_id");
+CREATE UNIQUE INDEX "myquotes_eventkeyword_keyword_id_eventkeyword_id_keyword_id_b281797a_uniq" ON "myquotes_eventkeyword_keyword_id" ("eventkeyword_id", "keyword_id");
+CREATE INDEX "myquotes_eventkeyword_keyword_id_eventkeyword_id_7a573e91" ON "myquotes_eventkeyword_keyword_id" ("eventkeyword_id");
+CREATE INDEX "myquotes_eventkeyword_keyword_id_keyword_id_6f5222ff" ON "myquotes_eventkeyword_keyword_id" ("keyword_id");
+COMMIT;
+```
+
 ## Data Loader Scripts
 
 ## References
