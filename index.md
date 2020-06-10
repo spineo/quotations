@@ -414,7 +414,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the bellow output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py))
+By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the below output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py) file)
 ```
 Migrations for 'myquotes':
   myquotes/migrations/0001_initial.py
@@ -428,7 +428,7 @@ Migrations for 'myquotes':
     - Create model EventAuthor
 ```
 
-You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_. Notice the additional entities auto-generated such as primary keys and indexes.
+You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_. Notice the additional entities that get auto-generated such as primary keys and indexes.
 ```
 BEGIN;
 --
@@ -481,7 +481,7 @@ COMMIT;
 
 We have two more commands to run. The _python3 manage.py makemigrations_ for good measure should return "No changes detected" since this is our firsts version.
 
-_python3 manage.py migrate_ will perform the actual migration of the latest changes applying them to our actual database file (i.e., data/myquotes.sqlite3). If all goes well you should see the below output:
+_python3 manage.py migrate_ will perform the actual migration of the latest changes applying them to our database store  (i.e., data/myquotes.sqlite3). If migration is successful you should see the below output:
 ```
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, myquotes, sessions
@@ -506,7 +506,9 @@ Running migrations:
   Applying sessions.0001_initial... OK
 ```
 
-You can also log into our database by issuing the command _sqlite3 myquote.sqlite3_ and running a built-in command like _.schema_ to view the applied entities.
+You can also log into the database by issuing the command _sqlite3 myquotes.sqlite3_ and running a built-in command like _.schema_ to view the applied entities.
+
+Now that our models and database are complete, we are ready to being populating our store (at least in the beginning, with some test data)
 
 ## Data Loader Scripts
 
