@@ -506,9 +506,9 @@ Running migrations:
   Applying sessions.0001_initial... OK
 ```
 
-You can also log into the database by issuing the command _sqlite3 myquotes.sqlite3_ and running a built-in command like _.schema_ to view the applied entities.
+You can also log into the database by issuing the command _sqlite3 myquotes.sqlite3_ from /data and then running a built-in command like _.schema_ to view the applied entities.
 
-Now that our models and database are complete, we are ready to being populating our store (at least in the beginning, with some test data)
+Now that our models and database are complete, we are ready to begin populating our store (at least initially, with some test data)
 
 ## Data Loader Scripts
 
@@ -517,3 +517,4 @@ Now that our models and database are complete, we are ready to being populating 
 * https://app.lucidchart.com/ (great App for creating ERD diagrams)
 * https://www.djangoproject.com
 * https://www.goodreads.com/quotes/ (thousands of quotes, categorized by topic)
+* https://docs.djangoproject.com/en/3.0/topics/db/models/
