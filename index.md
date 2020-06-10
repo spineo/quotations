@@ -58,11 +58,11 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 ## Web Automation Tools
 
-### Get the Quotes
+### Web Scrape the Quotes
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/get_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _tags_ (corresponding to "keywords" in the ERD). A short extract from the raw data generated is shown below:
+I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/scrape_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _tags_ (corresponding to "keywords" in the ERD). A short extract from the raw data generated is shown below:
 
 ```
 You've gotta dance like there's nobody watching###William W. Purkey######dance,heaven,hurt,inspirational,life,love,sing
@@ -72,7 +72,7 @@ Darkness cannot drive out darkness: only light can do that. Hate cannot drive ou
 We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower###inspirational,love
 ```
 
-The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/get_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
+The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/scrape_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
