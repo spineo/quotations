@@ -56,7 +56,7 @@ In a real query we may get zero or more events associated with a date (in the ca
 
 In the ideal world, a tie breaker might best be broken by pulling in some currently _trending topics_ (perhaps something for version 2.0 of this app!)
 
-## Web Automation Tools
+## Web Automation Tools and Data
 
 ### Web Scrape the Quotes
 
@@ -76,15 +76,15 @@ The script is run with the required command-line option '--config' which points 
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
-### List the Authors
+### Create the Initial List of Authors
 
 Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio.
 
-### List of Events
+### Create the Initial List of Events
 
 The initial list of events (at least to be used during the testing phase) would also be produced manually. These events will be tied to an author and/or keywords.
 
-### Filtering the Quotes
+### Filter the Quotes and tie them to the Authors/Events
 
  The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/dash-separated/stripped full name and applies it to the quotes file:
 ```
