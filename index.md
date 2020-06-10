@@ -414,7 +414,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the bellow output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py)
+By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the bellow output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py))
 ```
 Migrations for 'myquotes':
   myquotes/migrations/0001_initial.py
@@ -428,7 +428,7 @@ Migrations for 'myquotes':
     - Create model EventAuthor
 ```
 
-You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_:
+You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_. Notice the additional entities auto-generated such as primary keys and indexes.
 ```
 BEGIN;
 --
@@ -478,6 +478,35 @@ CREATE INDEX "myquotes_eventkeyword_keyword_id_eventkeyword_id_7a573e91" ON "myq
 CREATE INDEX "myquotes_eventkeyword_keyword_id_keyword_id_6f5222ff" ON "myquotes_eventkeyword_keyword_id" ("keyword_id");
 COMMIT;
 ```
+
+We have two more commands to run. The _python3 manage.py makemigrations_ for good measure should return "No changes detected" since this is our firsts version.
+
+_python3 manage.py migrate_ will perform the actual migration of the latest changes applying them to our actual database file (i.e., data/myquotes.sqlite3). If all goes well you should see the below output:
+```
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, myquotes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying myquotes.0001_initial... OK
+  Applying sessions.0001_initial... OK
+```
+
+You can also log into our database by issuing the command _sqlite3 myquote.sqlite3_ and running a built-in command like _.schema_ to view the applied entities.
 
 ## Data Loader Scripts
 
