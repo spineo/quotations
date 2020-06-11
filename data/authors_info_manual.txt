@@ -1,0 +1,26 @@
+Aristotle###-384###-322###Classical Greek philosopher and polymath, founder of the Peripatetic School###https://en.wikipedia.org/wiki/Aristotle
+Isaac Asimov###1920-01-02###1992-04-06###American science-fiction and non-fiction writer###https://en.wikipedia.org/wiki/Isaac_Asimov
+Marcus Aurelius###121-04-26###180-03-17###Roman emperor and philosopher###https://en.wikipedia.org/wiki/Marcus_Aurelius
+David Brower###1912-07-01###2000-11-05###Prominent environmentalist and the founder of many environmental organizations###https://en.wikipedia.org/wiki/David_Brower
+Pema Chodron###1936-07-14######American Tibetan Buddhist###https://en.wikipedia.org/wiki/Pema_Chodron
+Confucius###-551###-479###Chinese teacher, editor, politician and philosopher###https://en.wikipedia.org/wiki/Confucius
+Crazy Horse###1840###1877-09-05###Lakota war leader of the Oglala band###https://en.wikipedia.org/wiki/Crazy_Horse
+Jonathan Safran Foer###1977-02-21######American Novelist###https://en.wikipedia.org/wiki/Jonathan_Safran_Foer
+Hippocrates###-460###-370###Ancient Greek physician###https://en.wikipedia.org/wiki/Hippocrates
+Jon Kabat-Zinn###1944-06-05######American professor emeritus of medicine and the creator of the Stress Reduction Clinic and the Center for Mindfulness in Medicine, Health Care, and Society at the University of Massachusetts Medical School###https://en.wikipedia.org/wiki/Jon_Kabat-Zinn
+John F Kennedy###1917-05-29###1963-11-22###35th president of the United States###https://en.wikipedia.org/wiki/John_F_Kennedy
+Dalai Lama###1935-07-06######Tibetan Buddhist spiritual teacher###https://en.wikipedia.org/wiki/Dalai_Lama
+Aldo Leopold###1887-01-11###1948-04-21###American author, philosopher, scientist, ecologist, forester, conservationist, and environmentalist###https://en.wikipedia.org/wiki/Aldo_Leopold
+Luther Standing Bear###1868###1939-02-20###Sicangu and Oglala Lakota chief###https://en.wikipedia.org/wiki/Luther_Standing_Bear
+Chico Mendes###1944-12-15###1988-12-22###Brazilian rubber tapper, trade union leader and environmentalist###https://en.wikipedia.org/wiki/Chico_Mendes
+Robert M Pirsig###1928-09-06###2017-04-24###American writer and philosopher###https://en.wikipedia.org/wiki/Robert_M_Pirsig
+Rumi###1207-09-30###1273-11-17###13th-century Persian poet###https://en.wikipedia.org/wiki/Rumi
+Sharon Salzberg###1952-08-05######New York Times Best selling author and teacher of Buddhist meditation###https://en.wikipedia.org/wiki/Sharon_Salzberg
+Swami Sivananda###1887-09-08###1963-07-14###Hindu spiritual teacher and a proponent of Yoga and Vedanta###https://en.wikipedia.org/wiki/Swami_Sivananda
+Socrates###-470###-399###Classical Greek Athenian philosopher###https://en.wikipedia.org/wiki/Socrates
+Chogyam Trungpa###1939-03-05###1987-04-04###Tibetan Buddhist meditation master###https://en.wikipedia.org/wiki/Chogyam_Trungpa
+Harriet Tubman###1822-03###1913-03-10###African-American abolitionist###https://en.wikipedia.org/wiki/Harriet_Tubman
+Vincent Van Gogh###1853-03-30###1890-07-29###Dutch post-impressionist painter###https://en.wikipedia.org/wiki/Vincent_Van_Gogh
+Tara Brach###1953-05-17######American psychologist, author, and proponent of Buddhist meditation###https://en.wikipedia.org/wiki/Tara_Brach
+Michael A. Singer###1947-05-06######Bestselling author, a meditation center founder, and a former software programmer###https://en.wikipedia.org/wiki/Michael_A._Singer
+Sitting Bull###1831###1890-12-15###Hunkpapa Lakota leader who led his people during years of resistance to United States government policies###https://en.wikipedia.org/wiki/Sitting_Bull
