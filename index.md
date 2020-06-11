@@ -78,7 +78,11 @@ Note: Make sure that extraction of content does not infringe on copyrights (espe
 
 ### Create the Initial List of Authors
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking. As I produced this list, I also included the additional fields country of origin, occupation, birth date, death date (if deceased), and optionally a link to a bio.
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking.
+
+### Associate Additional Author Information
+
+As I produced this list, I also associated the additional fields birth date, death date (if deceased), title/short description and a link to a bio (i.e., Wikipedia).
 
 ### Create the Initial List of Events
 
