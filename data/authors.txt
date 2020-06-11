@@ -28,7 +28,7 @@ Ram Dass
 Leonardo Da Vinci
 Fyodor Dostoevsky
 Albert Einstein
-Raph Waldo Emerson
+Ralph Waldo Emerson
 William Faulkner
 Jonathan Safran Foer
 Pope Francis
@@ -62,7 +62,7 @@ Bob Marley
 Chico Mendes
 Mother Teresa
 John Muir
-Isaac Newtown
+Isaac Newton
 Anais Nin
 Barack Obama
 George Orwell
@@ -84,7 +84,7 @@ Socrates
 David Suzuki
 Shunryu Suzuki
 Sitting Bull
-Sri Chimnoy
+Sri Chinmoy
 Henry David Thoreau
 Chogyam Trungpa
 Eckhart Tolle
