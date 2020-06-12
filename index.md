@@ -72,17 +72,17 @@ Darkness cannot drive out darkness: only light can do that. Hate cannot drive ou
 We accept the love we think we deserve.###Stephen Chbosky###The Perks of Being a Wallflower###inspirational,love
 ```
 
-The script is run with the required command-line option '--config' which points to a site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/quotes/scrape_quotes.site.template) is checked into the _conf_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
+The script is run with the required command-line option '--config' which points to a scrape site specific configuration file. An example site [template](https://github.com/spineo/perl-scripts/blob/master/conf/quotes/scrape_quotes.site.template) is checked into the _conf/quotes_ directory of the _perl-scripts_ repository. For any sites I visit, at least for now, will not plan on using any available feeds (i.e., RSS) to extract data.
 
 Note: Make sure that extraction of content does not infringe on copyrights (especially if used for commercial purposes)
 
 ### Create the Initial List of Authors
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 authors spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking.
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 [authors](data/authors.txt) spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking.
 
 ### Associate Additional Author Information
 
-As I produced this list, I also associated the additional fields birth date, death date (if deceased), title/short description and a link to a bio (i.e., Wikipedia).
+As I produced this list, I also associated the additional fields birth date, death date (if deceased), title/short description and a link (i.e., Wikipedia) to the bio. To automate this scrape, I implemented the script [_scrape_authors_info.pl_]((https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_authors_info.pl) that used as input a scrape site specific configuration file ([_scrape_authors_info.site.template_](https://github.com/spineo/perl-scripts/blob/master/conf/quotes/scrape_authors_info.site.template) and the list of authors and output the new list [_authors_info_](data/authors_info.txt) with additional information. The script correctly found the bio and generated the url for all authors in the list (using Wikipedia) but had incomplete and/or erroneous data in 26/100 scrapes (much due to inconsistent formatting of the Wikipedia markup). Rather than make the script more generalizable and handle at least most of the remaining cases, I decided (at least for now) to fix these manually and add them to a separate file ([_authors_info_manual_](data/authors_info_manual.txt))
 
 ### Create the Initial List of Events
 
