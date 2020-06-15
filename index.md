@@ -78,7 +78,7 @@ Note: Make sure that extraction of content does not infringe on copyrights (espe
 
 ### Create the Initial List of Authors
 
-Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 [authors](data/authors.txt) spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking.
+Since the script can potentially retrieve tens of thousands of quotes (of which well over 99% are of no value to me) I decided to perform an intial filtering by author. For this manual exercise I arbitrarily came up with 100 [authors](data/authors.txt) (with a few added later) spanning multiple nationalities and occupations. The criteria for picking these authors was that they are (or were) masters in their endevours or occupations, in at least some aspect of their life were worthy of my admiration, and had attributed to them two or more quotations that were inspiring or thought provoking.
 
 ### Associate Additional Author Information
 
@@ -86,7 +86,7 @@ As I produced this list, I also associated the additional fields birth date, dea
 
 ### Create the Initial List of Events
 
-The initial list of events (at least to be used during the testing phase) would also be produced manually. These events will be tied to an author and/or keywords.
+The initial list of events (at least to be used during the testing phase) was also produced manually and saved to the [events.txt](data/events.txt) file and includes author name (for now just events tied to an author), date of the event, event name, and keywords associated with author/event.
 
 ### Filter the Quotes and tie them to the Authors/Events
 
