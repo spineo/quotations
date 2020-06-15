@@ -90,54 +90,7 @@ The initial list of events (at least to be used during the testing phase) was al
 
 ### Filter the Quotes and tie them to the Authors/Events
 
- The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/filter_quotes.pl) script then creates an intermediate data structure (sample shown below) keyed by the lowercased/dash-separated/stripped full name and applies it to the quotes file:
-```
-          'mark-twain' => {
-                           'lname_sig' => 'twain',
-                           'birth_date' => 'November 30, 1835',
-                           'title' => 'Author',
-                           'death_date' => 'April 21, 1910',
-                           'name' => 'Mark Twain',
-                           'origin' => 'American',
-                           'bio_url' => 'https://www.brainyquote.com/quotes/biography/mark-twain-biography'
-                         },
-          'henry-david-thoreau' => {
-                                   'name' => 'Henry David Thoreau',
-                                   'death_date' => 'May 6, 1862',
-                                   'origin' => 'American',
-                                   'bio_url' => 'https://www.brainyquote.com/quotes/biography/henry-david-thoreau-biography',
-                                   'title' => 'Author',
-                                   'birth_date' => 'July 12, 1817',
-                                   'lname_sig' => 'thoreau'
-                                 },
-          'winston-churchill' => {
-                                  'name' => 'Winston Churchill',
-                                  'death_date' => 'January 24, 1965',
-                                  'origin' => 'British',
-                                  'bio_url' => 'https://www.brainyquote.com/quotes/biography/winston-churchill-biography',
-                                  'title' => 'Statesman',
-                                  'birth_date' => 'November 30, 1874',
-                                  'lname_sig' => 'churchill'
-                                },
-          'steve-jobs' => {
-                           'death_date' => 'October 5, 2011',
-                           'name' => 'Steve Jobs',
-                           'origin' => 'American',
-                           'bio_url' => 'https://www.brainyquote.com/quotes/biography/steve-jobs-biography',
-                           'lname_sig' => 'jobs',
-                           'birth_date' => 'February 24, 1955',
-                           'title' => 'Businessman'
-                         },
-          'martin-luther-king' => {
-                                  'birth_date' => 'January 15, 1929',
-                                  'title' => 'Christian Minister and Activist',
-                                  'lname_sig' => 'king',
-                                  'name' => 'Martin Luther King Jr.',
-                                  'death_date' => 'April 4, 1968',
-                                  'bio_url' => 'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.',
-                                  'origin' => 'American'
-                                },
-```
+ The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/filter_quotes.pl) script creates an intermediate data structure based on the authors information and keyed by the lowercased/dash-separated/stripped full name with the Events and Quotes subsequently associated with the author.
 
 Pretty printed output for _Albert Einstein_ is shown below. A command-line option allows applying a filter by quote size (for this run any quote over 100 characters got tossed). While there a few quotes of interest, they are certainly not Einstein's best. In addition, a couple of quotes need translation and at least one is incomplete (clearly some manual effort will be required to remove and add quotations)
 ```
