@@ -21,30 +21,31 @@ Chief Joseph
 Chief Seattle
 Pema Chodron
 Deepak Chopra
-Winston Churchill
+Winston Churchill###1953-10-16###Sir Winston Churchill wins the Nobel Prize in Literature “for his mastery of historical and biographical description as well as for brilliant oratory in defending exalted human values”###winston-churchill,nobel-literature-prize,human-values
 Arthur C. Clarke
 Paulo Coelho
 Confucius
 Jacques Cousteau
 Crazy Horse###1877-09-05###Crazy Horse was fatally stabbed - He took up arms against the United States federal government to fight against encroachment by white American settlers on Native American territory and to preserve the traditional way of life of the Lakota people.###crazy-horse,lakota,battle-of-the-little-big-horn
-Marie Curie
+Marie Curie###1911###Marie Curie wins the Nobel Prize in Chemistry "in recognition of her services to the advancement of chemistry by the discovery of the elements radium and polonium, by the isolation of radium and the study of the nature and compounds of this remarkable element."###marie-curie,nobel-chemistry-prize
+Marie Curie###1903###Marie Curie wins the Nobel Prize of Physics "in recognition of the extraordinary services they have rendered by their joint researches on the radiation phenomena discovered by Professor Henri Becquerel."###marie-curie,nobel-physics-prize
 Ram Dass
 Leonardo Da Vinci
 Fyodor Dostoevsky
-Albert Einstein
-Ralph Waldo Emerson
-William Faulkner
+Albert Einstein###1922-11-09###Albert Einstein was awarded the 1921 Nobel Prize in Physics "for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect."###albert-einstein,nobel-physics-prize
+Ralph Waldo Emerson###1836-09-09###Emerson's influence was far reaching then, and continues to be now. Not only a writer, lecturer, and abolitionist, he helped advocate for women's and Native American rights. His profound thoughts continue to touch lives all throughout the world. Nature, published on this day 1836, waw Emerson's first book and perhaps the best expression of his Transcendentalism, the belief that everything in our world—even a drop of dew—is a microcosm of the universe.###ralph-waldo-emerson,nature,abolitionist,womens-rights,native-american-rights,transcendentalism
+William Faulkner###1949-12-###William Faulkner wins the Nobel Prize of Literature (awarded in 1950) “for his powerful and artistically unique contribution to the modern American novel”###william-faulkner,nobel-literature-prize
 Jonathan Safran Foer
 Pope Francis
-Anne Frank
-Benjamin Franklin
+Anne Frank###1944-08-01###Anne Frank's final entry in her diary. Among the most famoust diaries, accoring the British Library: "The diary provides a vivid and poignant glimpse into the world of a young Jewish girl living in Nazi occupied Holland. Anne wrote the diary while hiding from the Nazis in an Amsterdam warehouse."###anne-frank,diary,jewish-girl,nazi,nazi-occupied
+Benjamin Franklin###1776-08-02###Benjamin Franklin was a Founding Father and a polymath, inventor, scientist, printer, politician, freemason and diplomat. Franklin helped to draft the Declaration of Independence which was signed on this day 1776.###benjamin-franklin,founding-father,declaration-of-independence,polymath,inventor,scientist,printer,politician,freemason,diplomat
 Mahatma Gandhi###1869-10-02###Mahatma Gandhi was born - Mahatma Gandhi was the leader of India's non-violent independence movement against British rule and in South Africa who advocated for the civil rights of Indians. Born in Porbandar, India, Gandhi studied law and organized boycotts against British institutions in peaceful forms of civil disobedience.###mahatma-gandhi,non-violence,civil-rights,india,peaceful-disobedience
 Mahatma Gandhi###1948-01-30###Mahatma Gandhi is Assassinated - Mahatma Gandhi was the leader of India's non-violent independence movement against British rule and in South Africa who advocated for the civil rights of Indians. Born in Porbandar, India, Gandhi studied law and organized boycotts against British institutions in peaceful forms of civil disobedience.###mahatma-gandhi,non-violence,civil-rights,india,peaceful-disobedience
 Kahlil Gibran
 Jane Goodall
 Al Gore###2007-10-12###The Nobel Peace Prize 2007 was awarded jointly to Intergovernmental Panel on Climate Change (IPCC) and Albert Arnold (Al) Gore Jr. "for their efforts to build up and disseminate greater knowledge about man-made climate change, and to lay the foundations for the measures that are needed to counteract such change."###a-gore,nobel-peace-prize,climate-change
 Thich Nhat Hanh###1967-01-25###In an open letter, Dr.Martin Luther King, Jr. nominates Thich Nhat Hanh for the 1967 Nobel Peace Prize. In his nomination Dr. King said, "I do not personally know of anyone more worthy of [this prize] than this gentle monk from Vietnam. His ideas for peace, if applied, would build a monument to ecumenism, to world brotherhood, to humanity".###thich-nhat-hanh,peace,non-violence,mindfulness,nobel-peace-prize
-Herman Hesse
+Herman Hesse###1946###Herman Hesse wins the Nobel Prize of Literature “for his inspired writings which, while growing in boldness and penetration, exemplify the classical humanitarian ideals and high qualities of style”###herman-hesse,nobel-literature-prize,humanitarian
 Hippocrates
 Oliver Wendell Holmes Sr.
 Victor Hugo
@@ -65,7 +66,7 @@ Elisabeth Kubler-Ross
 Dalai Lama###1989-12-10###The 14th Dalai Lama (Tenzin Gyatso) was awarded the Nobel Peace Prize emphasizing his Buddhist peace philosophy on reverence for all living things and the idea of a universal responsibility that embraces both man and nature.###dalai-lama,14th-dalai-lama,tenzin-gyatso,nobel-peace-prize,buddhism,peace
 John Lennon
 Aldo Leopold
-Abraham Lincoln
+Abraham Lincoln###2021-02-15###President's Day honors and celebrates the life and achievements of George Washington, the first President of the United States (1789-1797) and 'The Father of his Country'. On this day we also honor and remember all past US presidents, and in particular Washington, Abraham Lincoln and Thomas Jefferson.###abraham-lincoln,presidents-day
 Henry Wadsworth Longfellow
 Luther Standing Bear
 Ramana Maharshi
@@ -83,6 +84,7 @@ Robert M Pirsig
 Plato
 Red Cloud
 Rumi
+Bertrand Russell###1950-12-11###The Nobel Prize in Literature awarded to Bertrand Russel "in recognition of his varied and significant writings in which he champions humanitarian ideals and freedom of thought”###bertrand-russell,nobel-literature-prize,humanitarian
 Carl Sagan
 Sharon Salzberg
 Dr. Seuss
@@ -111,3 +113,4 @@ Elie Wiesel###1986-10-14###Elie Wiesel was awarded the Nobel Peace Prize. The Je
 Marianne Williamson
 E.O. Wilson
 Frank Lloyd Wright
+William B Yeats###1923-12-10###The Nobel Prize in Literature 1923 was awarded to William Butler Yeats "for his always inspired poetry, which in a highly artistic form gives expression to the spirit of a whole nation."###william-b-yeats,nobel-literature-prize,poetry

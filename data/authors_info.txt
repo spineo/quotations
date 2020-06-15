@@ -54,6 +54,7 @@ Osho###1931-12-11###1990-01-19###Leader of the Rajneesh movement###https://en.wi
 Blaise Pascal###1623-06-19###1662-08-19###French mathematician, physicist, inventor, writer and Christian philosopher###https://en.wikipedia.org/wiki/Blaise_Pascal
 Plato######347###Classical Greek Athenian philosopher, founder of Platonism###https://en.wikipedia.org/wiki/Plato
 Red Cloud######1909-12-10###one of the most important leaders of the Oglala Lakota###https://en.wikipedia.org/wiki/Red_Cloud
+Bertrand Russell###1872-05-18###1970-02-02###British polymath - a philosopher, logician, mathematician, historian, writer, social critic, political activist, and Nobel laureate###https://en.wikipedia.org/wiki/Bertrand_Russell
 Carl Sagan###1934-11-09###1996-12-20###American astrophysicist, cosmologist, author and science educator###https://en.wikipedia.org/wiki/Carl_Sagan
 Dr. Seuss###1904-03-02###1991-09-24###American children's writer and illustrator###https://en.wikipedia.org/wiki/Dr._Seuss
 William Shakespeare######1616-04-23###English playwright and poet (1564–1616)###https://en.wikipedia.org/wiki/William_Shakespeare

@@ -24,3 +24,4 @@ Vincent Van Gogh###1853-03-30###1890-07-29###Dutch post-impressionist painter###
 Tara Brach###1953-05-17######American psychologist, author, and proponent of Buddhist meditation###https://en.wikipedia.org/wiki/Tara_Brach
 Michael A. Singer###1947-05-06######Bestselling author, a meditation center founder, and a former software programmer###https://en.wikipedia.org/wiki/Michael_A._Singer
 Sitting Bull###1831###1890-12-15###Hunkpapa Lakota leader who led his people during years of resistance to United States government policies###https://en.wikipedia.org/wiki/Sitting_Bull
+William B Yeats###1865-06-13###1939-01-28###Irish poet and one of the foremost figures of 20th-century literature###https://en.wikipedia.org/wiki/William_B_Yeats

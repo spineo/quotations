@@ -72,6 +72,7 @@ Robert M Pirsig
 Plato
 Red Cloud
 Rumi
+Bertrand Russell
 Carl Sagan
 Sharon Salzberg
 Dr. Seuss
@@ -98,3 +99,4 @@ Elie Wiesel
 Marianne Williamson
 E.O. Wilson
 Frank Lloyd Wright
+William B Yeats
