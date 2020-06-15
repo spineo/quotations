@@ -82,11 +82,11 @@ Since the script can potentially retrieve tens of thousands of quotes (of which 
 
 ### Associate Additional Author Information
 
-As I produced this list, I also associated the additional fields birth date, death date (if deceased), title/short description and a link (i.e., Wikipedia) to the bio. To automate this scrape, I implemented the script [_scrape_authors_info.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_authors_info.pl) that used as input a scrape site specific configuration file ([_scrape_authors_info.site.template_](https://github.com/spineo/perl-scripts/blob/master/conf/quotes/scrape_authors_info.site.template) and the list of authors and output the new list [_authors_info_](data/authors_info.txt) with additional information. The script correctly found the bio and generated the url for all authors in the list (using Wikipedia) but had incomplete and/or erroneous data in 26/100 scrapes (much due to inconsistent formatting of the Wikipedia markup and dates content). Rather than make the script more generalizable and handle at least most of the remaining cases, I decided (at least for now) to fix these manually and add them to a separate file ([_authors_info_manual_](data/authors_info_manual.txt))
+As I produced this list, I also associated the additional fields birth date, death date (if deceased), title/short description and a link (i.e., Wikipedia) to the bio. To automate this scrape, I implemented the script [_scrape_authors_info.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_authors_info.pl) that used as input a scrape site specific configuration file ([_scrape_authors_info.site.template_](https://github.com/spineo/perl-scripts/blob/master/conf/quotes/scrape_authors_info.site.template) and the list of authors and output the new list [_authors_info_](data/authors_info.txt) with additional information. The script correctly found the bio and generated the url for all authors in the list (using Wikipedia) but had incomplete and/or erroneous data in 26/100 scrapes (much due to inconsistent formatting of the Wikipedia markup and dates content). Rather than make the script more generalizable and handle at least most of the remaining cases, I decided (at least for now) to fix these manually and add them to a separate file ([_authors_info_manual_](data/authors_info_manual.txt)). The filter script below can then takes as input a catenated file containing both lists.
 
 ### Create the Initial List of Events
 
-The initial list of events (at least to be used during the testing phase) was also produced manually and saved to the [events.txt](data/events.txt) file and includes author name (for now just events tied to an author), date of the event, event name, and keywords associated with author/event.
+The initial list of events (at least to be used during the testing phase) was also produced manually and saved to the [_events.txt_](data/events.txt) file and includes author name (for now just events tied to an author), date of the event, event name, and keywords associated with author/event.
 
 ### Filter the Quotes and tie them to the Authors/Events
 
@@ -139,38 +139,38 @@ The initial list of events (at least to be used during the testing phase) was al
                                 },
 ```
 
-Pretty printed output for one author is shown below. A command-line option allows applying a filter by quote size (for this run any quote over 100 characters got tossed). Clearly a language filter (or translator) might also be useful!
+Pretty printed output for _Albert Einstein_ is shown below. A command-line option allows applying a filter by quote size (for this run any quote over 100 characters got tossed). While there a few quotes of interest, they are certainly not Einstein's best. In addition, a couple of quotes need translation and at least one is incomplete (clearly some manual effort will be required to remove and add quotations)
 ```
           'albert-einstein' => {
-                                 'birth_date' => 'March 14, 1879',
-                                 'name' => 'Albert Einstein',
-                                 'title' => 'Physicist',
-                                 'death_date' => 'April 18, 1955',
                                  'lname_sig' => 'einstein',
+                                 'name' => 'Albert Einstein',
+                                 'birth_date' => '1879-03-14',
+                                 'description' => 'German-born physicist and developer of the theory of relativity (1879-1955)',
+                                 'death_date' => '1955-04-18',
                                  'quotes' => [
                                                {
-                                                 'source' => 'Ideas and Opinions',
                                                  'author' => 'Albert Einstein',
-                                                 'quote' => 'Student is not a container you have to fill but a torch you have to light up.',
-                                                 'tags' => 'albert-einstein,quote'
+                                                 'tags' => 'albert-einstein,quote',
+                                                 'source' => 'Ideas and Opinions',
+                                                 'quote' => 'Student is not a container you have to fill but a torch you have to light up.'
                                                },
                                                {
                                                  'source' => '',
-                                                 'author' => 'Albert Einstein',
                                                  'quote' => 'Anyone who doesn\'t take truth seriously in small matters cannot be trusted in large ones either.',
+                                                 'author' => 'Albert Einstein',
                                                  'tags' => 'albert-einstein,truth'
                                                },
                                                {
-                                                 'tags' => 'advice,albert-einstein',
-                                                 'author' => 'Albert Einstein',
                                                  'quote' => 'Weak people revenge. Strong people forgive. Intelligent people ignore.',
-                                                 'source' => ''
+                                                 'source' => '',
+                                                 'tags' => 'advice,albert-einstein',
+                                                 'author' => 'Albert Einstein'
                                                },
                                                {
+                                                 'tags' => 'albert-einstein,crisis,opportunity',
                                                  'author' => 'Albert Einstein',
                                                  'quote' => 'In the midst of every crisis, lies great opportunity.',
-                                                 'source' => '',
-                                                 'tags' => 'albert-einstein,crisis,opportunity'
+                                                 'source' => ''
                                                },
                                                {
                                                  'source' => '',
@@ -179,16 +179,16 @@ Pretty printed output for one author is shown below. A command-line option allow
                                                  'tags' => 'albert-einstein,civil-rights-movement,famous,racism,segregation'
                                                },
                                                {
-                                                 'tags' => 'aggravating,albert-einstein,generation,life,young,youth',
+                                                 'source' => '',
                                                  'quote' => 'The most aggravating thing about the younger generation is that I no longer belong to it.',
                                                  'author' => 'Albert Einstein',
-                                                 'source' => ''
+                                                 'tags' => 'aggravating,albert-einstein,generation,life,young,youth'
                                                },
                                                {
-                                                 'tags' => '1901,1993,albert-einstein,paul-carter,roger-highfield',
                                                  'source' => '',
+                                                 'quote' => 'Autoritätsdusel ist der größte Feind der Wahrheit.',
                                                  'author' => 'Albert Einstein',
-                                                 'quote' => 'Autoritätsdusel ist der größte Feind der Wahrheit.'
+                                                 'tags' => '1901,1993,albert-einstein,paul-carter,roger-highfield'
                                                },
                                                {
                                                  'source' => '',
@@ -197,15 +197,22 @@ Pretty printed output for one author is shown below. A command-line option allow
                                                  'tags' => 'albert-einstein'
                                                },
                                                {
-                                                 'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words',
-                                                 'quote' => 'It was my good fortune to be linked with',
+                                                 'tags' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength'
+                                                 'quote' => 'It was my good fortune to be linked with',
+                                                 'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words'
                                                }
                                              ],
-                                 'origin' => 'German',
-                                 'bio_url' => 'https://www.brainyquote.com/quotes/biography/albert-einstein-biography'
+                                 'events' => [
+                                               {
+                                                 'tags' => 'albert-einstein,nobel-physics-prize',
+                                                 'event_date' => '1922-11-09',
+                                                 'event' => 'Albert Einstein was awarded the 1921 Nobel Prize in Physics "for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect."'
+                                               }
+                                             ],
+                                 'bio_url' => 'https://en.wikipedia.org/wiki/Albert_Einstein'
                                },
+
 ```
 
 Alternatively, the filtering script can output the author tags and then have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
