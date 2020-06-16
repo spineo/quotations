@@ -92,8 +92,8 @@ The initial list of events (at least to be used during the testing phase) was al
 
  The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/filter_quotes.pl) script creates an intermediate data structure based on the authors information and keyed by the lowercased/dash-separated/stripped full name with the Events and Quotes subsequently associated with the author.
 
-Pretty printed output for _Albert Einstein_ is shown below using the --debug flag (the output used by the loader shown below  is JSON formatted). A command-line option allows applying a filter by quote size (for this run any quote over 200 characters got tossed). In addition, the quote, keywords, and source are validated for characters outside an ASCII range (i.e., octal \040-\176) which rules out some, but not all, foreign sets. While there a few quotes of interest in this example, they are certainly not Einstein's best so clearly an admin API will be needed to add, update, or remove quotes.
-```perl
+Pretty printed below is the _reference_ output for _Albert Einstein_ generated using the --debug flag (the actual output used as input to the loader, which is shown in the next section, is JSON formatted). A command-line option allows applying a filter by quote size (for this run any quote over 200 characters got tossed). In addition, the quote, keywords, and source are validated for characters outside an ASCII range (i.e., octal \040-\176) which rules out some, but not all, foreign sets. While there a few quotes of interest in this example, they are certainly not Einstein's best so clearly an admin API will be needed to easily add, update, or remove quotes and other data.
+```
           'albert-einstein' => {
                                  'bio_url' => 'https://en.wikipedia.org/wiki/Albert_Einstein',
                                  'birth_date' => '1879-03-14',
