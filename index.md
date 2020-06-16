@@ -1,3 +1,7 @@
+code {
+  white-space : pre-wrap !important;
+}
+
 # About Quotations
 
 This project involves developing a simple Web Application that displays quotations based on context such as date, event, or degree of relevance. An example context would be to display a quotation by a famous historical personality on his/her birthday. Another one, to display a quotation relevant to a current event. A last one, where date or event relevance is not available, have the relevance be based on keywords association.
