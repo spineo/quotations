@@ -511,5 +511,6 @@ The [_load_quotes_sqlite.pl_](https://github.com/spineo/perl-scripts/blob/master
 
 * https://app.lucidchart.com/ (great App for creating ERD diagrams)
 * https://www.djangoproject.com
+* https://en.wikipedia.org/wiki/Main_Page (good source for bio and other information)
 * https://www.goodreads.com/quotes/ (thousands of quotes, categorized by topic)
 * https://docs.djangoproject.com/en/3.0/topics/db/models/
