@@ -62,7 +62,7 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _tags_ (corresponding to "keywords" in the ERD). A short extract from the raw data generated is shown below:
+I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _keywords_. A short extract from the raw data generated is shown below:
 
 ```
 You've gotta dance like there's nobody watching###William W. Purkey######dance,heaven,hurt,inspirational,life,love,sing
@@ -103,7 +103,7 @@ Pretty printed output for _Albert Einstein_ is shown below using the --debug fla
                                  'quotes' => [
                                                {
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'albert-einstein,quote',
+                                                 'keywords' => 'albert-einstein,quote',
                                                  'source' => 'Ideas and Opinions',
                                                  'quote' => 'Student is not a container you have to fill but a torch you have to light up.'
                                                },
@@ -111,16 +111,16 @@ Pretty printed output for _Albert Einstein_ is shown below using the --debug fla
                                                  'source' => '',
                                                  'quote' => 'Anyone who doesn\'t take truth seriously in small matters cannot be trusted in large ones either.',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'albert-einstein,truth'
+                                                 'keywords' => 'albert-einstein,truth'
                                                },
                                                {
                                                  'quote' => 'Weak people revenge. Strong people forgive. Intelligent people ignore.',
                                                  'source' => '',
-                                                 'tags' => 'advice,albert-einstein',
+                                                 'keywords' => 'advice,albert-einstein',
                                                  'author' => 'Albert Einstein'
                                                },
                                                {
-                                                 'tags' => 'albert-einstein,crisis,opportunity',
+                                                 'keywords' => 'albert-einstein,crisis,opportunity',
                                                  'author' => 'Albert Einstein',
                                                  'quote' => 'In the midst of every crisis, lies great opportunity.',
                                                  'source' => ''
@@ -129,28 +129,28 @@ Pretty printed output for _Albert Einstein_ is shown below using the --debug fla
                                                  'source' => '',
                                                  'quote' => 'Racism is a disease of white people',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'albert-einstein,civil-rights-movement,famous,racism,segregation'
+                                                 'keywords' => 'albert-einstein,civil-rights-movement,famous,racism,segregation'
                                                },
                                                {
                                                  'source' => '',
                                                  'quote' => 'The most aggravating thing about the younger generation is that I no longer belong to it.',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'aggravating,albert-einstein,generation,life,young,youth'
+                                                 'keywords' => 'aggravating,albert-einstein,generation,life,young,youth'
                                                },
                                                {
                                                  'source' => '',
                                                  'quote' => 'Autoritätsdusel ist der größte Feind der Wahrheit.',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => '1901,1993,albert-einstein,paul-carter,roger-highfield'
+                                                 'keywords' => '1901,1993,albert-einstein,paul-carter,roger-highfield'
                                                },
                                                {
                                                  'source' => '',
                                                  'quote' => 'Aku takut suatu hari teknologi akan melampaui interaksi manusia. Dunia akan memiliki generasi idiot',
                                                  'author' => 'Albert Einstein',
-                                                 'tags' => 'albert-einstein'
+                                                 'keywords' => 'albert-einstein'
                                                },
                                                {
-                                                 'tags' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength',
+                                                 'keywords' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength',
                                                  'author' => 'Albert Einstein',
                                                  'quote' => 'It was my good fortune to be linked with',
                                                  'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words'
@@ -158,7 +158,7 @@ Pretty printed output for _Albert Einstein_ is shown below using the --debug fla
                                              ],
                                  'events' => [
                                                {
-                                                 'tags' => 'albert-einstein,nobel-physics-prize',
+                                                 'keywords' => 'albert-einstein,nobel-physics-prize',
                                                  'event_date' => '1922-11-09',
                                                  'event' => 'Albert Einstein was awarded the 1921 Nobel Prize in Physics "for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect."'
                                                }
@@ -168,7 +168,7 @@ Pretty printed output for _Albert Einstein_ is shown below using the --debug fla
 
 ```
 
-Alternatively, the filtering script can output the author tags and then have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
+Alternatively, the filtering script can output the author keywords and then have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
 
 ## Web Framework
 
