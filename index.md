@@ -92,80 +92,101 @@ The initial list of events (at least to be used during the testing phase) was al
 
  The [_filter_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/filter_quotes.pl) script creates an intermediate data structure based on the authors information and keyed by the lowercased/dash-separated/stripped full name with the Events and Quotes subsequently associated with the author.
 
-Pretty printed output for _Albert Einstein_ is shown below using the --debug flag (the output used by the loader is JSON formatted). A command-line option allows applying a filter by quote size (for this run any quote over 100 characters got tossed). While there a few quotes of interest in this example, they are certainly not Einstein's best. In addition, a couple of quotes need translation and at least one is incomplete (clearly some manual effort will be required to remove and add quotations)
+Pretty printed output for _Albert Einstein_ is shown below using the --debug flag (the output used by the loader is JSON formatted). A command-line option allows applying a filter by quote size (for this run any quote over 200 characters got tossed). In addition, the quote, keywords, and source are validated for characters outside an ASCII range (i.e., octal \040-\176) which rules out foreign sets for this exercise. While there a few quotes of interest in this example, they are certainly not Einstein's best so clearly an admin API will be needed to add, update, or remove quotes.
 ```
           'albert-einstein' => {
-                                 'lname_sig' => 'einstein',
-                                 'name' => 'Albert Einstein',
+                                 'bio_url' => 'https://en.wikipedia.org/wiki/Albert_Einstein',
                                  'birth_date' => '1879-03-14',
                                  'description' => 'German-born physicist and developer of the theory of relativity (1879-1955)',
+                                 'lname_sig' => 'einstein',
+                                 'events' => [
+                                               {
+                                                 'event_date' => '1922-11-09',
+                                                 'event' => 'Albert Einstein was awarded the 1921 Nobel Prize in Physics "for his services to Theoretical Physics, 
+and especially for his discovery of the law of the photoelectric effect."',
+                                                 'keywords' => 'albert-einstein,nobel-physics-prize'
+                                               }
+                                             ],
                                  'death_date' => '1955-04-18',
                                  'quotes' => [
                                                {
-                                                 'author' => 'Albert Einstein',
-                                                 'keywords' => 'albert-einstein,quote',
-                                                 'source' => 'Ideas and Opinions',
-                                                 'quote' => 'Student is not a container you have to fill but a torch you have to light up.'
-                                               },
-                                               {
-                                                 'source' => '',
-                                                 'quote' => 'Anyone who doesn\'t take truth seriously in small matters cannot be trusted in large ones either.',
-                                                 'author' => 'Albert Einstein',
-                                                 'keywords' => 'albert-einstein,truth'
-                                               },
-                                               {
-                                                 'quote' => 'Weak people revenge. Strong people forgive. Intelligent people ignore.',
-                                                 'source' => '',
-                                                 'keywords' => 'advice,albert-einstein',
+                                                 'quote' => 'I know not with what weapons World War III will be fought, but World War IV will be fought with sticks
+ and stones.',
+                                                 'keywords' => 'albert-einstein,future,war,wisdom',
                                                  'author' => 'Albert Einstein'
                                                },
                                                {
-                                                 'keywords' => 'albert-einstein,crisis,opportunity',
                                                  'author' => 'Albert Einstein',
-                                                 'quote' => 'In the midst of every crisis, lies great opportunity.',
-                                                 'source' => ''
+                                                 'source' => 'Ideas and Opinions',
+                                                 'quote' => 'Student is not a container you have to fill but a torch you have to light up.',
+                                                 'keywords' => 'albert-einstein,quote'
                                                },
                                                {
-                                                 'source' => '',
-                                                 'quote' => 'Racism is a disease of white people',
+                                                 'keywords' => 'albert-einstein,einstein,inspirational,loner',
+                                                 'quote' => 'Although I am a typical loner in my daily life, my awareness of belonging to the invisible community o
+f those who strive for truth, beauty, and justice has prevented me from feelings of isolation.',
+                                                 'author' => 'Albert Einstein'
+                                               },
+                                               {
+                                                 'keywords' => 'albert-einstein,truth',
+                                                 'quote' => 'Anyone who doesn\'t take truth seriously in small matters cannot be trusted in large ones either.',
+                                                 'author' => 'Albert Einstein'
+                                               },
+                                               {
                                                  'author' => 'Albert Einstein',
+                                                 'quote' => 'Weak people revenge. Strong people forgive. Intelligent people ignore.',
+                                                 'keywords' => 'advice,albert-einstein'
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'keywords' => 'albert-einstein',
+                                                 'quote' => 'Ethical axioms are found and tested not very differently from the axioms of science. Truth is what sta
+nds the test of experience.'
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'In the midst of every crisis, lies great opportunity.',
+                                                 'keywords' => 'albert-einstein,crisis,opportunity'
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'keywords' => 'albert-einstein,stupidity,wired-for-war',
+                                                 'quote' => 'Never attribute to malice that which can be adequately explained by stupidity, but don\'t rule out malice.'
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Racism is a disease of white people',
                                                  'keywords' => 'albert-einstein,civil-rights-movement,famous,racism,segregation'
                                                },
                                                {
-                                                 'source' => '',
-                                                 'quote' => 'The most aggravating thing about the younger generation is that I no longer belong to it.',
                                                  'author' => 'Albert Einstein',
+                                                 'quote' => 'The most aggravating thing about the younger generation is that I no longer belong to it.',
                                                  'keywords' => 'aggravating,albert-einstein,generation,life,young,youth'
                                                },
                                                {
-                                                 'source' => '',
-                                                 'quote' => 'Autoritätsdusel ist der größte Feind der Wahrheit.',
                                                  'author' => 'Albert Einstein',
-                                                 'keywords' => '1901,1993,albert-einstein,paul-carter,roger-highfield'
+                                                 'quote' => 'Kada sedite sat vremena kraj lepe devojke, to prodje kao minut. Sedite minut na vrelu pec i to ce trajati kao sat. To se zove relativitet.',
+                                                 'keywords' => 'albert-einstein,relativity,relativity-theory'
                                                },
                                                {
-                                                 'source' => '',
-                                                 'quote' => 'Aku takut suatu hari teknologi akan melampaui interaksi manusia. Dunia akan memiliki generasi idiot',
                                                  'author' => 'Albert Einstein',
+                                                 'keywords' => 'albert-einstein,philosophy,quantum-physics',
+                                                 'quote' => 'That deep emotional conviction of the presence of a superior reasoning power, which is revealed in the incomprehensible universe, forms my idea of God.'
+                                               },
+                                               {
+                                                 'author' => 'Albert Einstein',
+                                                 'quote' => 'Aku takut suatu hari teknologi akan melampaui interaksi manusia. Dunia akan memiliki generasi idiot',
                                                  'keywords' => 'albert-einstein'
                                                },
                                                {
                                                  'keywords' => 'austerity,curie,experimental-science,fortune,friendship,grandeur,intuition,marie-curie,nobel-laureate,purity,science,scientist,strength',
-                                                 'author' => 'Albert Einstein',
                                                  'quote' => 'It was my good fortune to be linked with',
-                                                 'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words'
+                                                 'source' => 'Out of My Later Years: The Scientist, Philosopher, and Man Portrayed Through His Own Words',
+                                                 'author' => 'Albert Einstein'
                                                }
                                              ],
-                                 'events' => [
-                                               {
-                                                 'keywords' => 'albert-einstein,nobel-physics-prize',
-                                                 'event_date' => '1922-11-09',
-                                                 'event' => 'Albert Einstein was awarded the 1921 Nobel Prize in Physics "for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect."'
-                                               }
-                                             ],
-                                 'bio_url' => 'https://en.wikipedia.org/wiki/Albert_Einstein'
+                                 'name' => 'Albert Einstein'
                                },
-
 ```
 
 Alternatively, the filtering script can output the author keywords and then have the quote extraction script apply these directly when searching the site(s) (instead of returning and then filtering a broader search keyed by topic)
