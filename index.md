@@ -58,11 +58,13 @@ In the ideal world, a tie breaker might best be broken by pulling in some curren
 
 ## Web Automation Tools and Data
 
+I have added some Web automation _scraper_ scripts along with the _filter_ and _loader_ scripts under my GitHub [_Perl_](https://github.com/spineo/perl-scripts) repository (see https://github.com/spineo/perl-scripts/bin/quotes). These will be referenced in the sections that follow. The scripts also use the supporting _Util_ packages under the [_lib/Util_](https://github.com/spineo/perl-scripts/lib/Util) directory and reference configuration files added under the [_conf/quotes_](https://github.com/spineo/perl-scripts/conf/quotes) directory.
+
 ### Web Scrape the Quotes
 
-The purpose of these tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
+The purpose of the _scrape_ tools is to pull raw data when possible. Much of the data "cleanup" will be done manually. This will include deciding which quotations and events to include as well as which keywords to associate.
 
-I have created, as generic as possible, a Web automation [script](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_quotes.pl) located in my [perl-scripts](https://github.com/spineo/perl-scripts/) GitHub repository to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _keywords_. A short extract from the raw data generated is shown below:
+I have created the Web automation [_scrape_quotes.pl_](https://github.com/spineo/perl-scripts/blob/master/bin/quotes/scrape_quotes.pl) script to pull a few thousand _quotations/authors_ from one or more sites as well as an optional _source_ (for this site, usually a book reference) and _keywords_. A short extract from the raw data generated is shown below:
 
 ```
 You've gotta dance like there's nobody watching###William W. Purkey######dance,heaven,hurt,inspirational,life,love,sing
