@@ -6,15 +6,16 @@ import calendar
 #
 class Author(models.Model):
     full_name        = models.CharField(max_length=100, unique=True)
-    birth_date       = models.DateField()
-    death_date       = models.DateField()
-    bio_extract      = models.CharField(max_length=400)
-    bio_source_url   = models.URLField()
+    birth_date       = models.DateField(null=True)
+    death_date       = models.DateField(null=True)
+    description      = models.CharField(max_length=200, null=True)
+    bio_extract      = models.CharField(max_length=800, null=True)
+    bio_source_url   = models.URLField(null=True)
 
 class Quotation(models.Model):
     quotation        = models.CharField(max_length=200, unique=True)
-    quotation_source = models.CharField(max_length=100, null=True)
-    author_id        = models.ForeignKey(Author, on_delete=models.CASCADE)
+    source           = models.CharField(max_length=100, null=True)
+    author           = models.ForeignKey(Author, on_delete=models.CASCADE)
 
 class Event(models.Model):
     MONTH_CHOICES    = [(str(i), calendar.month_name[i]) for i in range(1,13)]
@@ -41,17 +42,17 @@ class Keyword(models.Model):
     keyword          = models.CharField(max_length=50, unique=True)
 
 class QuotationLastShown(models.Model):
-    quotation_id     = models.OneToOneField(Quotation, on_delete=models.CASCADE)
+    quotation        = models.OneToOneField(Quotation, on_delete=models.CASCADE)
     last_shown_date  = models.DateField()
 
 class QuotationKeyword(models.Model):
-    quotation_id     = models.OneToOneField(Quotation, on_delete=models.CASCADE)
-    keyword_id       = models.ManyToManyField(Keyword)
+    quotation        = models.OneToOneField(Quotation, on_delete=models.CASCADE)
+    keyword          = models.ManyToManyField(Keyword)
 
 class EventAuthor(models.Model):
-    event_id         = models.OneToOneField(Event, on_delete=models.CASCADE)
-    author_id        = models.OneToOneField(Author, on_delete=models.CASCADE)
+    event            = models.OneToOneField(Event, on_delete=models.CASCADE)
+    author           = models.OneToOneField(Author, on_delete=models.CASCADE)
 
 class EventKeyword(models.Model):
-    event_id         = models.ManyToManyField(Event)
-    keyword_id       = models.ManyToManyField(Keyword)
+    event            = models.ManyToManyField(Event)
+    keyword          = models.ManyToManyField(Keyword)

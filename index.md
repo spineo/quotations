@@ -503,6 +503,154 @@ Running migrations:
 
 You can also log into the database by issuing the command ___sqlite3 myquotes.sqlite3___ from /data and then running a built-in command like _.schema_ to view the applied entities.
 
+As the project evolved, a few changes were made to the _models.py_ (one in particular, involved removing the "_id" suffix from foreign key names since the database mapping automatically added this suffix to these column names). To make these alterations, the  ___makemigrations___ can be re-run and prompts answered as shown below. If successful, a summary of the alterations follows.
+```
+python3 manage.py makemigrations myquotes
+Did you rename eventauthor.author_id to eventauthor.author (a OneToOneField)? [y/N] y
+Did you rename eventauthor.event_id to eventauthor.event (a OneToOneField)? [y/N] y
+Did you rename eventkeyword.event_id to eventkeyword.event (a ManyToManyField)? [y/N] y
+Did you rename eventkeyword.keyword_id to eventkeyword.keyword (a ManyToManyField)? [y/N] y
+Did you rename quotation.author_id to quotation.author (a ForeignKey)? [y/N] y
+Did you rename quotation.quotation_source to quotation.source (a CharField)? [y/N] y
+Did you rename quotationkeyword.keyword_id to quotationkeyword.keyword (a ManyToManyField)? [y/N] y
+Did you rename quotationkeyword.quotation_id to quotationkeyword.quotation (a OneToOneField)? [y/N] y
+Did you rename quotationlastshown.quotation_id to quotationlastshown.quotation (a OneToOneField)? [y/N] y
+Migrations for 'myquotes':
+  myquotes/migrations/0002_auto_20200619_1206.py
+    - Rename field author_id on eventauthor to author
+    - Rename field event_id on eventauthor to event
+    - Rename field event_id on eventkeyword to event
+    - Rename field keyword_id on eventkeyword to keyword
+    - Rename field author_id on quotation to author
+    - Rename field quotation_source on quotation to source
+    - Rename field keyword_id on quotationkeyword to keyword
+    - Rename field quotation_id on quotationkeyword to quotation
+    - Rename field quotation_id on quotationlastshown to quotation
+    - Add field description to author
+    - Alter field bio_extract on author
+    - Alter field bio_source_url on author
+    - Alter field birth_date on author
+    - Alter field death_date on author
+```
+
+The alterations can now be verified as before:
+```
+python3 manage.py sqlmigrate myquotes 0002
+BEGIN;
+--
+-- Rename field author_id on eventauthor to author
+--
+CREATE TABLE "new__myquotes_eventauthor" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "author_id" integer NOT NULL UNIQUE REFERENCES "myquotes_author" ("id") DEFERRABLE INITIALLY DEFERRED, "event_id_id" integer NOT NULL UNIQUE REFERENCES "myquotes_event" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__myquotes_eventauthor" ("id", "event_id_id", "author_id") SELECT "id", "event_id_id", "author_id_id" FROM "myquotes_eventauthor";
+DROP TABLE "myquotes_eventauthor";
+ALTER TABLE "new__myquotes_eventauthor" RENAME TO "myquotes_eventauthor";
+--
+-- Rename field event_id on eventauthor to event
+--
+CREATE TABLE "new__myquotes_eventauthor" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "author_id" integer NOT NULL UNIQUE REFERENCES "myquotes_author" ("id") DEFERRABLE INITIALLY DEFERRED, "event_id" integer NOT NULL UNIQUE REFERENCES "myquotes_event" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__myquotes_eventauthor" ("id", "author_id", "event_id") SELECT "id", "author_id", "event_id_id" FROM "myquotes_eventauthor";
+DROP TABLE "myquotes_eventauthor";
+ALTER TABLE "new__myquotes_eventauthor" RENAME TO "myquotes_eventauthor";
+--
+-- Rename field event_id on eventkeyword to event
+--
+CREATE TABLE "myquotes_eventkeyword_event" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "eventkeyword_id" integer NOT NULL REFERENCES "myquotes_eventkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "event_id" integer NOT NULL REFERENCES "myquotes_event" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "myquotes_eventkeyword_event" (id, eventkeyword_id, event_id) SELECT id, eventkeyword_id, event_id FROM "myquotes_eventkeyword_event_id";
+DROP TABLE "myquotes_eventkeyword_event_id";
+--
+-- Rename field keyword_id on eventkeyword to keyword
+--
+CREATE TABLE "myquotes_eventkeyword_keyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "eventkeyword_id" integer NOT NULL REFERENCES "myquotes_eventkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "keyword_id" integer NOT NULL REFERENCES "myquotes_keyword" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "myquotes_eventkeyword_keyword" (id, eventkeyword_id, keyword_id) SELECT id, eventkeyword_id, keyword_id FROM "myquotes_eventkeyword_keyword_id";
+DROP TABLE "myquotes_eventkeyword_keyword_id";
+--
+-- Rename field author_id on quotation to author
+--
+CREATE TABLE "new__myquotes_quotation" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotation" varchar(200) NOT NULL UNIQUE, "quotation_source" varchar(100) NULL, "author_id" integer NOT NULL REFERENCES "myquotes_author" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__myquotes_quotation" ("id", "quotation", "quotation_source", "author_id") SELECT "id", "quotation", "quotation_source", "author_id_id" FROM "myquotes_quotation";
+DROP TABLE "myquotes_quotation";
+ALTER TABLE "new__myquotes_quotation" RENAME TO "myquotes_quotation";
+CREATE UNIQUE INDEX "myquotes_eventkeyword_event_eventkeyword_id_event_id_7b1d035e_uniq" ON "myquotes_eventkeyword_event" ("eventkeyword_id", "event_id");
+CREATE INDEX "myquotes_eventkeyword_event_eventkeyword_id_610edce7" ON "myquotes_eventkeyword_event" ("eventkeyword_id");
+CREATE INDEX "myquotes_eventkeyword_event_event_id_2cbaa7ed" ON "myquotes_eventkeyword_event" ("event_id");
+CREATE UNIQUE INDEX "myquotes_eventkeyword_keyword_eventkeyword_id_keyword_id_339b537c_uniq" ON "myquotes_eventkeyword_keyword" ("eventkeyword_id", "keyword_id");
+CREATE INDEX "myquotes_eventkeyword_keyword_eventkeyword_id_346ba203" ON "myquotes_eventkeyword_keyword" ("eventkeyword_id");
+CREATE INDEX "myquotes_eventkeyword_keyword_keyword_id_b4b84aaf" ON "myquotes_eventkeyword_keyword" ("keyword_id");
+CREATE INDEX "myquotes_quotation_author_id_6456d063" ON "myquotes_quotation" ("author_id");
+--
+-- Rename field quotation_source on quotation to source
+--
+ALTER TABLE "myquotes_quotation" RENAME COLUMN "quotation_source" TO "source";
+--
+-- Rename field keyword_id on quotationkeyword to keyword
+--
+CREATE TABLE "myquotes_quotationkeyword_keyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotationkeyword_id" integer NOT NULL REFERENCES "myquotes_quotationkeyword" ("id") DEFERRABLE INITIALLY DEFERRED, "keyword_id" integer NOT NULL REFERENCES "myquotes_keyword" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "myquotes_quotationkeyword_keyword" (id, quotationkeyword_id, keyword_id) SELECT id, quotationkeyword_id, keyword_id FROM "myquotes_quotationkeyword_keyword_id";
+DROP TABLE "myquotes_quotationkeyword_keyword_id";
+--
+-- Rename field quotation_id on quotationkeyword to quotation
+--
+CREATE TABLE "new__myquotes_quotationkeyword" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "quotation_id" integer NOT NULL UNIQUE REFERENCES "myquotes_quotation" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__myquotes_quotationkeyword" ("id", "quotation_id") SELECT "id", "quotation_id_id" FROM "myquotes_quotationkeyword";
+DROP TABLE "myquotes_quotationkeyword";
+ALTER TABLE "new__myquotes_quotationkeyword" RENAME TO "myquotes_quotationkeyword";
+CREATE UNIQUE INDEX "myquotes_quotationkeyword_keyword_quotationkeyword_id_keyword_id_ea70edcc_uniq" ON "myquotes_quotationkeyword_keyword" ("quotationkeyword_id", "keyword_id");
+CREATE INDEX "myquotes_quotationkeyword_keyword_quotationkeyword_id_56f3530e" ON "myquotes_quotationkeyword_keyword" ("quotationkeyword_id");
+CREATE INDEX "myquotes_quotationkeyword_keyword_keyword_id_3312254e" ON "myquotes_quotationkeyword_keyword" ("keyword_id");
+--
+-- Rename field quotation_id on quotationlastshown to quotation
+--
+CREATE TABLE "new__myquotes_quotationlastshown" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "last_shown_date" date NOT NULL, "quotation_id" integer NOT NULL UNIQUE REFERENCES "myquotes_quotation" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__myquotes_quotationlastshown" ("id", "last_shown_date", "quotation_id") SELECT "id", "last_shown_date", "quotation_id_id" FROM "myquotes_quotationlastshown";
+DROP TABLE "myquotes_quotationlastshown";
+ALTER TABLE "new__myquotes_quotationlastshown" RENAME TO "myquotes_quotationlastshown";
+--
+-- Add field description to author
+--
+CREATE TABLE "new__myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "birth_date" date NOT NULL, "death_date" date NOT NULL, "bio_extract" varchar(400) NOT NULL, "bio_source_url" varchar(200) NOT NULL, "description" varchar(200) NULL);
+INSERT INTO "new__myquotes_author" ("id", "full_name", "birth_date", "death_date", "bio_extract", "bio_source_url", "description") SELECT "id", "full_name", "birth_date", "death_date", "bio_extract", "bio_source_url", NULL FROM "myquotes_author";
+DROP TABLE "myquotes_author";
+ALTER TABLE "new__myquotes_author" RENAME TO "myquotes_author";
+--
+-- Alter field bio_extract on author
+--
+CREATE TABLE "new__myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "birth_date" date NOT NULL, "death_date" date NOT NULL, "bio_source_url" varchar(200) NOT NULL, "description" varchar(200) NULL, "bio_extract" varchar(800) NULL);
+INSERT INTO "new__myquotes_author" ("id", "full_name", "birth_date", "death_date", "bio_source_url", "description", "bio_extract") SELECT "id", "full_name", "birth_date", "death_date", "bio_source_url", "description", "bio_extract" FROM "myquotes_author";
+DROP TABLE "myquotes_author";
+ALTER TABLE "new__myquotes_author" RENAME TO "myquotes_author";
+--
+-- Alter field bio_source_url on author
+--
+CREATE TABLE "new__myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "birth_date" date NOT NULL, "death_date" date NOT NULL, "bio_extract" varchar(800) NULL, "description" varchar(200) NULL, "bio_source_url" varchar(200) NULL);
+INSERT INTO "new__myquotes_author" ("id", "full_name", "birth_date", "death_date", "bio_extract", "description", "bio_source_url") SELECT "id", "full_name", "birth_date", "death_date", "bio_extract", "description", "bio_source_url" FROM "myquotes_author";
+DROP TABLE "myquotes_author";
+ALTER TABLE "new__myquotes_author" RENAME TO "myquotes_author";
+--
+-- Alter field birth_date on author
+--
+CREATE TABLE "new__myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "death_date" date NOT NULL, "bio_extract" varchar(800) NULL, "bio_source_url" varchar(200) NULL, "description" varchar(200) NULL, "birth_date" date NULL);
+INSERT INTO "new__myquotes_author" ("id", "full_name", "death_date", "bio_extract", "bio_source_url", "description", "birth_date") SELECT "id", "full_name", "death_date", "bio_extract", "bio_source_url", "description", "birth_date" FROM "myquotes_author";
+DROP TABLE "myquotes_author";
+ALTER TABLE "new__myquotes_author" RENAME TO "myquotes_author";
+--
+-- Alter field death_date on author
+--
+CREATE TABLE "new__myquotes_author" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "full_name" varchar(100) NOT NULL UNIQUE, "birth_date" date NULL, "bio_extract" varchar(800) NULL, "bio_source_url" varchar(200) NULL, "description" varchar(200) NULL, "death_date" date NULL);
+INSERT INTO "new__myquotes_author" ("id", "full_name", "birth_date", "bio_extract", "bio_source_url", "description", "death_date") SELECT "id", "full_name", "birth_date", "bio_extract", "bio_source_url", "description", "death_date" FROM "myquotes_author";
+DROP TABLE "myquotes_author";
+ALTER TABLE "new__myquotes_author" RENAME TO "myquotes_author";
+COMMIT;
+```
+
+To apply the changes, the actual ___migration___ can now be run which will pick-up the latest changes:
+```
+python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, myquotes, sessions
+Running migrations:
+  Applying myquotes.0002_auto_20200619_1206... OK
+```
+
 Now that our models and database are complete, we are ready to begin populating our store (at least initially, with some test data)
 
 ## Database Loader Script
