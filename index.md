@@ -335,7 +335,7 @@ In this file, you can also change the default 'UTC' timezone if needed (in my ca
 
 In order to map our ERD created earlier to the database using the built-in Django Object Relation Mapping (ORM) we will edit the file [_myquotes/models.py_](myquotes/models.py) and include the classes (that subclass _django.db.models.Model_) and generally map to the database tables and the class variables, which map to the database fields.
 
-The Models (at least the first draft) that capture the ERD shown earlier are defined below:
+The Models (latest draft) that capture the ERD shown earlier are defined below:
 ```
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -345,15 +345,16 @@ import calendar
 #
 class Author(models.Model):
     full_name        = models.CharField(max_length=100, unique=True)
-    birth_date       = models.DateField()
-    death_date       = models.DateField()
-    bio_extract      = models.CharField(max_length=400)
-    bio_source_url   = models.URLField()
+    birth_date       = models.DateField(null=True)
+    death_date       = models.DateField(null=True)
+    description      = models.CharField(max_length=200, null=True)
+    bio_extract      = models.CharField(max_length=800, null=True)
+    bio_source_url   = models.URLField(null=True)
 
 class Quotation(models.Model):
     quotation        = models.CharField(max_length=200, unique=True)
-    quotation_source = models.CharField(max_length=100, null=True)
-    author_id        = models.ForeignKey(Author, on_delete=models.CASCADE)
+    source           = models.CharField(max_length=100, null=True)
+    author           = models.ForeignKey(Author, on_delete=models.CASCADE)
 
 class Event(models.Model):
     MONTH_CHOICES    = [(str(i), calendar.month_name[i]) for i in range(1,13)]
@@ -371,7 +372,7 @@ class Event(models.Model):
         return MaxValueValidator(current_year())(value)
 
     event            = models.CharField(max_length=100, unique=True)
-    day              = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True) 
+    day              = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True)
     month            = models.CharField(max_length=9, choices=MONTH_CHOICES, default=1, null=True)
     year             = models.IntegerField(validators=[max_value_current_year, MinValueValidator(-1000)], null=True)
     season           = models.CharField(max_length=6, choices=SEASON_CHOICES, null=True)
@@ -380,20 +381,20 @@ class Keyword(models.Model):
     keyword          = models.CharField(max_length=50, unique=True)
 
 class QuotationLastShown(models.Model):
-    quotation_id     = models.OneToOneField(Quotation, on_delete=models.CASCADE)
+    quotation        = models.OneToOneField(Quotation, on_delete=models.CASCADE)
     last_shown_date  = models.DateField()
 
 class QuotationKeyword(models.Model):
-    quotation_id     = models.OneToOneField(Quotation, on_delete=models.CASCADE)
-    keyword_id       = models.ManyToManyField(Keyword)
+    quotation        = models.OneToOneField(Quotation, on_delete=models.CASCADE)
+    keyword          = models.ManyToManyField(Keyword)
 
 class EventAuthor(models.Model):
-    event_id         = models.OneToOneField(Event, on_delete=models.CASCADE)
-    author_id        = models.OneToOneField(Author, on_delete=models.CASCADE)
+    event            = models.OneToOneField(Event, on_delete=models.CASCADE)
+    author           = models.OneToOneField(Author, on_delete=models.CASCADE)
 
 class EventKeyword(models.Model):
-    event_id         = models.ManyToManyField(Event)
-    keyword_id       = models.ManyToManyField(Keyword)
+    event            = models.ManyToManyField(Event)
+    keyword          = models.ManyToManyField(Keyword)
 ```
 
 We will now modified the [_quotations/settings.py_](quotations/settings.py) to include the 'myquotes' app we just defined in the list of _INSTALLED_APPS_:
