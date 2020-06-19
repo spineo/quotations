@@ -409,7 +409,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-By running the command _python3 manage.py makemigrations myquotes_ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the below output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py) file)
+By running the command ___python3 manage.py makemigrations myquotes___ we will create the intermediate format for the models that can be mapped to the database entities (this command can be run every time we change the model and provides a means to fix any syntax problems with the _models.py_). Once successful, you will get the below output and the intermediate structures stored in the latest migration (i.e., [_myquotes/migrations/0001_initial.py_](myquotes/migrations/0001_initial.py) file)
 ```
 Migrations for 'myquotes':
   myquotes/migrations/0001_initial.py
@@ -423,7 +423,7 @@ Migrations for 'myquotes':
     - Create model EventAuthor
 ```
 
-You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command _python3 manage.py sqlmigrate myquotes 0001_. Notice the additional entities that get auto-generated such as primary keys and indexes.
+You can also view the _SQL_ (shown below) that gets generated and applied to the database by running the command ___python3 manage.py sqlmigrate myquotes 0001___. Notice the additional entities that get auto-generated such as primary keys and indexes.
 ```
 BEGIN;
 --
@@ -474,9 +474,9 @@ CREATE INDEX "myquotes_eventkeyword_keyword_id_keyword_id_6f5222ff" ON "myquotes
 COMMIT;
 ```
 
-We have two more commands to run. The _python3 manage.py makemigrations_ for good measure should return "No changes detected" since this is our firsts version.
+We have two more commands to run. The ___python3 manage.py makemigrations___ for good measure should return "No changes detected" since this is our firsts version.
 
-_python3 manage.py migrate_ will perform the actual migration of the latest changes applying them to our database store  (i.e., data/myquotes.sqlite3). If migration is successful you should see the below output:
+___python3 manage.py migrate___ will perform the actual migration of the latest changes applying them to our database store  (i.e., data/myquotes.sqlite3). If migration is successful you should see the below output:
 ```
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, myquotes, sessions
@@ -501,7 +501,7 @@ Running migrations:
   Applying sessions.0001_initial... OK
 ```
 
-You can also log into the database by issuing the command _sqlite3 myquotes.sqlite3_ from /data and then running a built-in command like _.schema_ to view the applied entities.
+You can also log into the database by issuing the command ___sqlite3 myquotes.sqlite3___ from /data and then running a built-in command like _.schema_ to view the applied entities.
 
 Now that our models and database are complete, we are ready to begin populating our store (at least initially, with some test data)
 
