@@ -681,7 +681,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<Event: Event object (1)>, <Event: Event object (2)>, <Event: Event object (3)>, <Event: Event object (4)>, <Event: Event object (5)>, <Event: Event object (6)>, <Event: Event object (7)>, <Event: Event object (8)>, <Event: Event object (9)>, <Event: Event object (10)>, <Event: Event object (11)>, <Event: Event object (12)>, <Event: Event object (13)>, <Event: Event object (14)>, <Event: Event object (15)>, <Event: Event object (16)>, <Event: Event object (17)>, <Event: Event object (18)>, <Event: Event object (19)>, <Event: Event object (20)>, '...(remaining elements truncated)...']>
 >>> Event.objects.filter(id=1).values()
 <QuerySet [{'id': 1, 'event': "President's Day honors and celebrates the life and achievements of George Washington, the first President of the United States (1789-1797) and 'The Father of his Country'. On this day we also honor and remember all past US presidents, and in particular Washington, Abraham Lincoln and Thomas Jefferson.", 'day': 15, 'month': '02', 'year': 2021, 'season': 'Winter'}]>
->>>
+>>> exit()
 ```
 
 ## Setting Up the Admin API
@@ -705,6 +705,64 @@ Next, ensure that the Web application is running and the admin app is accessible
 After entering the _admin_ username and password created above, you should now see the Admin Web page shown below. We will revisit this API as we develop the App.
 
 ![Admin Web Page](images/admin_web_page.png)
+
+
+## Creating the Admin CRUD (Create, Read, Update Delete) API
+
+### Example Generic List View: Listing Events
+
+We will build this API incrementally. The first step will be to simply create a listing of all _events_. For this, we will first create a ___myquotes/templates___ directory and add to it the below ___event.html___ file with the contents as shown:
+
+```
+<h1>Events</h1>
+<ul>
+{% for event in event_list %}
+    <li>{{ event.event }}</li>
+{% endfor %}
+</ul>
+```
+
+Next we will modify the ___myquotes/view.py___ to use the Django generic _ListView_ library and integrate the template:
+```
+from django.views.generic.list import ListView
+
+from myquotes.models import Event
+    
+# 'context_object_name' by default is 'event_list' but can be overriden
+#
+class EventListView(ListView):
+    model = Event
+    template_name = "event.html"
+```
+
+The ___quotations/urls.py___ can now be modified to use this new class view, in addition to our admin one defined earlier (the ___myquotes/urls.py__, at least for now, is not necessary):
+```
+from django.contrib import admin
+from django.urls import include, path
+
+from myquotes.views import EventListView
+    
+urlpatterns = [
+    path('myquotes/event/', EventListView.as_view()),
+    path('admin/', admin.site.urls),
+]   
+```
+
+Finally, the ___quotations/settings.py___ needs to be modified to find the new template by including the following:
+
+At the end of the "Build paths..." section add:
+```
+MYQUOTES_TEMPLATES = os.path.join(BASE_DIR, 'myquotes/templates/')
+```
+
+Under the _TEMPLATES_ data structure add:
+```
+TEMPLATE_DIRS = (
+    'MYQUOTES_TEMPLATES',
+)
+```
+
+If we now go to our url ___http://localhost:8000/myquotes/event/___ we should see our "Events" headline followed by the bulleted listing of events.
 
 
 ## References
