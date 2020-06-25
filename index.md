@@ -716,9 +716,11 @@ We will build this API incrementally. The first step will be to simply create a 
 ```
 <h1>Events</h1>
 <ul>
-\{% for event in event_list %\}
-    <li>\{\{ event.event \}\}</li>
-\{% endfor %\}
+{% raw %}
+{% for event in event_list %}
+    <li>{{ event.event }}</li>
+{% endfor %}
+{% endraw %}
 </ul>
 ```
 
