@@ -665,6 +665,25 @@ Usage:   ./load_quotes_sqlite.pl --db-conf <database config file> [ --debug --ve
 Example: ./load_quotes_sqlite.pl --db-conf myquotes.conf --debug --verbose < filter_quotes_output.json
 ```
 
+## Using the Django Shell to Access the Data
+
+While you can query the SQLite tables directly to look at the loaded data using SQL, a more direct and user-friendly way is to use the _models_ API. In the example below we log into the shell and import the _Event_ class.
+
+We can display the partial list of abstracted _objects_ and then filter by an attribute (in this case _id_) to display _Event_ data associated with that id.
+```
+python3 manage.py shell
+Python 3.7.6 (default, Dec 27 2019, 09:51:13) 
+[Clang 10.0.0 (clang-1000.11.45.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from myquotes.models import Event
+>>> Event.objects.all()
+<QuerySet [<Event: Event object (1)>, <Event: Event object (2)>, <Event: Event object (3)>, <Event: Event object (4)>, <Event: Event object (5)>, <Event: Event object (6)>, <Event: Event object (7)>, <Event: Event object (8)>, <Event: Event object (9)>, <Event: Event object (10)>, <Event: Event object (11)>, <Event: Event object (12)>, <Event: Event object (13)>, <Event: Event object (14)>, <Event: Event object (15)>, <Event: Event object (16)>, <Event: Event object (17)>, <Event: Event object (18)>, <Event: Event object (19)>, <Event: Event object (20)>, '...(remaining elements truncated)...']>
+>>> Event.objects.filter(id=1).values()
+<QuerySet [{'id': 1, 'event': "President's Day honors and celebrates the life and achievements of George Washington, the first President of the United States (1789-1797) and 'The Father of his Country'. On this day we also honor and remember all past US presidents, and in particular Washington, Abraham Lincoln and Thomas Jefferson.", 'day': 15, 'month': '02', 'year': 2021, 'season': 'Winter'}]>
+>>>
+```
+
 ## Setting Up the Admin API
 
 The _Admin_ API will allow us to manage _users_ and _groups_ and perform other meta-operations. By default, you should have the required Apps (i.e., _django.contrib.admin_ and _django.contrib.auth_) under the _INSTALLED_APPS_ section of your _quotations/settings.py_ (as well as the supporting _MIDDLEWARE_ libraries and _TEMPLATES_)
