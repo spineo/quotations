@@ -672,8 +672,13 @@ Password (again):
 Superuser created successfully.
 ```
 
-Next, ensure that the Web application is running and the admin app is accessible by going to the URL http://localhost:8000/admin, assuming the default port (if necessary restart the Web application by running ___python3 manage.py runserver___). You should see the Web page shown below:
+Next, ensure that the Web application is running and the admin app is accessible by going to the URL http://localhost:8000/admin, assuming the default port (if necessary restart the Web application by running ___python3 manage.py runserver___). You should see the Admin Login Web page shown below:
 
+![Admin_Login](images/admin_login.png)
+
+After entering the _admin_ username and password created above, you should now see the Admin Web page shown below. We will revisit this API as we develop the App.
+
+![Admin Web Page](images/admin_web_page.png)
 
 
 ## References
