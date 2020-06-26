@@ -824,7 +824,7 @@ Finally, we can test changing the event we just added.
 
 and then, once we save and confirm that it has changed, deleting it.
 
-!{Admin Event Delete](images/admin_event_delete.png)
+![Admin Event Delete](images/admin_event_delete.png)
 
 This completes our manual _CRUD_ of Events verification. The next step will be to extend the Admin CRUD API to include _Authors_, _Quotations_, _Keywords_, and their relationships.
 
