@@ -766,6 +766,45 @@ TEMPLATE_DIRS = (
 
 If we now go to our url ___http://localhost:8000/myquotes/event/___ we should see our "Events" headline followed by the bulleted listing of events.
 
+## Admin CRUD API for Events
+
+Now that we have worked on our simple listing API, the _Admin API_ to implement our _CRUD_ functionality should be even easier since it leverages the existing admin libraries. For the _event_ example, we will first modify the _myquotes/models.py_ Event class as shown below. Basically we changed the return value of the _max_value_current_year_ method to use the _datetime_ library (so will also need to add the _from datetime import date_ at the top of the models.py). We also changed the values for _SEASON_CHOICES_ to match the data loaded. Finally, we added the class return value so that the Event _event name_ is returned rather than the object reference.
+
+```
+class Event(models.Model):
+    MONTH_CHOICES    = [(str(i), calendar.month_name[i]) for i in range(1,13)]
+    SEASON_CHOICES   = [
+        ('Winter', 'Winter'),
+        ('Spring', 'Spring'),
+        ('Summer', 'Summer'),
+        ('Fall',   'Fall'),
+    ]
+
+    def max_value_current_year():
+        return date.today().year 
+
+    event            = models.CharField(max_length=400, unique=True)
+    day              = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True) 
+    month            = models.CharField(max_length=9, choices=MONTH_CHOICES, default=1, null=True)
+    year             = models.IntegerField(validators=[MaxValueValidator(max_value_current_year()+1), MinValueValidator(-1000)], null=True)
+    season           = models.CharField(max_length=6, choices=SEASON_CHOICES, null=True)
+
+    def __str__(self):
+        return self.event
+```
+
+We will also modify the _myquotes/admin.py_ to include the following:
+```
+from django.contrib import admin
+    
+from myquotes.models import Event
+    
+admin.site.register(Event)
+```
+
+We can now log on to the Admin API like we did before by going to http://localhost:8000/admin but this time we will see a link to our Events API:
+
+![Admin Events](images/admin_events.png)
 
 ## References
 
