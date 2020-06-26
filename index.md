@@ -806,11 +806,11 @@ We can now log on to the Admin API like we did before by going to http://localho
 
 ![Admin Events](images/admin_events.png)
 
-If we click on the _Events_ link, we will see the listing of all the event names. As shown in the screenshot below, we can check multiple events, select the action _Delete selected events_, and delete the selected events in one batch.
+If we click on the _Events_ link, we will see the listing of all the event names. As shown in the screenshot below, we can check multiple events, select the action _Delete selected events_, and delete the selected events in one batch (which we will not do just quite yet)
 
 ![Admin Events Delete](images/admin_events_delete.png)
 
-Alternatively, I we click on the _ADD EVENT +_ (top-right corner) it will bring us to a form that we can fill out to manually add an event:
+Alternatively, if we click on the _ADD EVENT +_ (top-right corner) it will bring us to a form that we can fill out to manually add an event:
 
 ![Admin Event Add](images/admin_event_add.png)
 
@@ -818,10 +818,15 @@ and once the event is successfully added, it will show up at the top position of
 
 ![Admin Event Added](images/admin_event_added.png)
 
-Finally, we can test changing the event we just added and then, once we confirm that it has changed deleting it.
+Finally, we can test changing the event we just added.
 
 ![Admin Event Changed](images/admin_event_change.png)
 
+and then, once we save and confirm that it has changed, deleting it.
+
+!{Admin Event Delete](images/admin_event_delete.png)
+
+This completes our manual _CRUD_ of Events verification. The next step will be to extend the Admin CRUD API to include _Authors_, _Quotations_, _Keywords_, and their relationships.
 
 ## References
 
