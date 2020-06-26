@@ -806,7 +806,7 @@ We can now log on to the Admin API like we did before by going to http://localho
 
 ![Admin Events](images/admin_events.png)
 
-If we click on the _Events_ link, we will see a listing of the events names. As shown in the screenshot below, we can check multiple events, select the action _Delete selected events_, and delete the selected events in one batch.
+If we click on the _Events_ link, we will see the listing of all the event names. As shown in the screenshot below, we can check multiple events, select the action _Delete selected events_, and delete the selected events in one batch.
 
 ![Admin Events Delete](images/admin_events_delete.png)
 
@@ -818,8 +818,9 @@ and once the event is successfully added, it will show up at the top position of
 
 ![Admin Event Added](images/admin_event_added.png)
 
+Finally, we can test changing the event we just added and then, once we confirm that it has changed deleting it.
 
-
+![Admin Event Changed](images/admin_event_changed.png)
 
 
 ## References
