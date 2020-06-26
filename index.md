@@ -806,6 +806,22 @@ We can now log on to the Admin API like we did before by going to http://localho
 
 ![Admin Events](images/admin_events.png)
 
+If we click on the _Events_ link, we will see a listing of the events names. As shown in the screenshot below, we can check multiple events, select the action _Delete selected events_, and delete the selected events in one batch.
+
+![Admin Events Delete](images/admin_events_delete.png)
+
+Alternatively, I we click on the _ADD EVENT +_ (top-right corner) it will bring us to a form that we can fill out to manually add an event:
+
+![Admin Event Add](images/admin_event_add.png)
+
+and once the event is successfully added, it will show up at the top position of the listing:
+
+![Admin Event Added](images/admin_event_added.png)
+
+
+
+
+
 ## References
 
 * https://app.lucidchart.com/ (great App for creating ERD diagrams)
