@@ -820,7 +820,7 @@ and once the event is successfully added, it will show up at the top position of
 
 Finally, we can test changing the event we just added and then, once we confirm that it has changed deleting it.
 
-![Admin Event Changed](images/admin_event_changed.png)
+![Admin Event Changed](images/admin_event_change.png)
 
 
 ## References
