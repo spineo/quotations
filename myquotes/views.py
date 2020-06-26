@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.list import ListView
 
-def index(request):
-    return HttpResponse("This is my test quotations index file.")
+from myquotes.models import Event
+
+# 'context_object_name' by default is 'event_list' but can be overriden
+#
+class EventListView(ListView):
+    model = Event
+    template_name = "event.html"

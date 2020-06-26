@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 import calendar
+from datetime import date
 
 # The primary key field for each class is auto-generated
 #
@@ -20,23 +21,23 @@ class Quotation(models.Model):
 class Event(models.Model):
     MONTH_CHOICES    = [(str(i), calendar.month_name[i]) for i in range(1,13)]
     SEASON_CHOICES   = [
-        ('WINTER', 'Winter'),
-        ('SPRING', 'Spring'),
-        ('SUMMER', 'Summer'),
-        ('FALL',   'Fall'),
+        ('Winter', 'Winter'),
+        ('Spring', 'Spring'),
+        ('Summer', 'Summer'),
+        ('Fall',   'Fall'),
     ]
 
-    def current_year():
-        return datetime.date.today().year
+    def max_value_current_year():
+        return date.today().year
 
-    def max_value_current_year(value):
-        return MaxValueValidator(current_year())(value)
-
-    event            = models.CharField(max_length=100, unique=True)
+    event            = models.CharField(max_length=400, unique=True)
     day              = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True) 
     month            = models.CharField(max_length=9, choices=MONTH_CHOICES, default=1, null=True)
-    year             = models.IntegerField(validators=[max_value_current_year, MinValueValidator(-1000)], null=True)
+    year             = models.IntegerField(validators=[MaxValueValidator(max_value_current_year()+1), MinValueValidator(-1000)], null=True)
     season           = models.CharField(max_length=6, choices=SEASON_CHOICES, null=True)
+
+    def __str__(self):
+        return self.event
 
 class Keyword(models.Model):
     keyword          = models.CharField(max_length=50, unique=True)
