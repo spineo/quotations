@@ -56,7 +56,7 @@ In a real query we may get zero or more events associated with a date (in the ca
 
 In the ideal world, a tie breaker might best be broken by pulling in some currently _trending topics_ (perhaps something for version 2.0 of this app!)
 
-## Web Automation/Filering Tools and Data
+## Web Automation/Filtering Tools and Data
 
 I have added some Web automation _scraper_ scripts along with the _filter_ and _loader_ scripts under my GitHub [_Perl_](https://github.com/spineo/perl-scripts) repository (see [_bin/quotes_](https://github.com/spineo/perl-scripts/tree/master/bin/quotes)). These will be referenced in the sections that follow. The scripts also use the supporting _Util_ packages under the [_lib/Util_](https://github.com/spineo/perl-scripts/tree/master/lib/Util) directory and reference configuration files added under the [_conf/quotes_](https://github.com/spineo/perl-scripts/tree/master/conf/quotes) directory.
 
