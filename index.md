@@ -834,7 +834,7 @@ This completes our manual _CRUD_ of Events verification. The next step will be t
 
 As I was loading the _myquotes_authors_ table, a few of the instance date fields (i.e., _birth_date_ and _death_date_) got loaded with bogus values. This came to light as I was trying to create a view to display the author attributes but kept on getting validation errors. The bogus value in most cases was a year without an associated month and day which produced a validation error at the level of the Object Relational Mapper (ORM) _models_  used by the view. The most accurate solution to this problem was first to add the associated integer attributes birth and death year/day to capture the years and days and, like I also did with the _Event_, use the mapping function to generate the month display names for the month fields (thus a _birth_date_ and/or _death_date_ missing the required year, month, and/or day would be set to null)
 
-While I was at it, I also decided to cleanup the _models.py_ by adding a _Date_ class to handle all these functions now used more than once and make it easy to set/modify some associated global variables (in essence following the codes axiom _DRY_ or _Do Not Repeat Yourself!_)
+While I was at it, I also decided to cleanup the _models.py_ by adding a _Date_ class to handle all these functions now used more than once and make it easy to set/modify some associated global variables (in essence following the coders axiom _DRY_ or _Do Not Repeat Yourself!_)
 
 The new changes are shown below:
 ```
@@ -874,6 +874,51 @@ class Author(models.Model):
     bio_source_url   = models.URLField(null=True)
 ```
 
+Next, we want to apply (in particular the author table) the alterations to our underlying database but, before doing that it is wise to delete the data to avoid any referential integrety issues that might interfere with the process. Fortunately, all this data was generated with our automation scripts and will be easy to reconstitute.
+
+To automate the deletes, a simple batch file (i.e., _bin/tables_delete.sql_) with the delete statements will suffice:
+```
+delete from myquotes_quotationlastshown;
+delete from myquotes_quotationkeyword;
+delete from myquotes_quotationkeyword_keyword;
+delete from myquotes_eventkeyword_keyword;
+delete from myquotes_eventkeyword_event;
+delete from myquotes_eventauthor;
+delete from myquotes_eventkeyword;
+delete from myquotes_event;
+delete from myquotes_author;
+delete from myquotes_quotation;
+delete from myquotes_keyword;
+```
+
+From our new _bin_ directory we can now run ___sqlite3 ../data/myquotes.sqlite3 < tables_delete.sql___ and do the cleanup instantly. Of course, our production version integrating manual updates will require backups and some additional logic.
+
+We are now ready to apply our new changes by creating our migrations file:
+```
+python3 manage.py makemigrations
+Migrations for 'myquotes':
+  myquotes/migrations/0003_auto_20200629_0938.py
+    - Add field birth_day to author
+    - Add field birth_month to author
+    - Add field birth_year to author
+    - Add field death_day to author
+    - Add field death_month to author
+    - Add field death_year to author
+    - Alter field event on event
+    - Alter field season on event
+    - Alter field year on event
+```
+
+and then applying it:
+```
+python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, myquotes, sessions
+Running migrations:
+  Applying myquotes.0003_auto_20200629_0938... OK
+```
+
+I
 
 
 ## References
