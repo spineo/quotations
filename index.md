@@ -952,9 +952,9 @@ and the detail, by clicking on an individual author:
 
 As a final step, we can test the years range validations by attempting to save the profile after modifying the years:
 
-![Admin Author Validation](images/admin_author__validation.png)
+![Admin Author Validation](images/admin_author_validation.png)
 
-Of course, this uncovered and additional problem which is that our main dates did not change (we will need to fix this by re-generating this value dynamically or possibly removing the now unneeded field)
+Of course, this uncovered an additional problem which is that our main dates did not change (we will need to fix this by re-generating this value dynamically or possibly removing the now unneeded field)
 
 
 ## References
