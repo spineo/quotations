@@ -828,7 +828,53 @@ and then, once we save and confirm that it has changed, deleting it.
 
 ![Admin Event Delete](images/admin_event_delete.png)
 
-This completes our manual _CRUD_ of Events verification. The next step will be to extend the Admin CRUD API to include _Authors_, _Quotations_, _Keywords_, and their relationships.
+This completes our manual _CRUD_ of Events verification. The next step will be to extend the Admin CRUD API to include _Authors_, _Quotations_, _Keywords_, and their relationships but, before we get there, some cleanup is in order.
+
+### New Alterations to the Schema
+
+As I was loading the _myquotes_authors_ table, a few of the instance date fields (i.e., _birth_date_ and _death_date_) got loaded with bogus values. This came to light as I was trying to create a view to display the author attributes but kept on getting validation errors. The bogus value in most cases was a year without an associated month and day which produced a validation error at the level of the Object Relational Mapper (ORM) _models_  used by the view. The most accurate solution to this problem was first to add the associated integer attributes birth and death year/day to capture the years and days and, like I also did with the _Event_, use the mapping function to generate the month display names for the month fields (thus a _birth_date_ and/or _death_date_ missing the required year, month, and/or day would be set to null)
+
+While I was at it, I also decided to cleanup the _models.py_ by adding a _Date_ class to handle all these functions now used more than once and make it easy to set/modify some associated global variables (in essence following the codes axiom _DRY_ or _Do Not Repeat Yourself!_)
+
+The new changes are shown below:
+```
+# Handling dates
+#
+class Date():
+    MONTH_CHOICES    = [(str(i), calendar.month_name[i]) for i in range(1,13)]
+
+    SEASON_CHOICES   = [
+        ('Winter', 'Winter'),
+        ('Spring', 'Spring'),
+        ('Summer', 'Summer'),
+        ('Fall',   'Fall'),
+    ]
+
+    MAX_FUTURE_YEARS = 5
+    MIN_YEAR         = -1000
+
+    def max_value_current_year():
+        return date.today().year
+
+
+# The primary key field for each class is auto-generated
+#
+class Author(models.Model):
+    full_name        = models.CharField(max_length=100, unique=True)
+    birth_date       = models.DateField(null=True)
+    birth_day        = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True)      
+    birth_month      = models.CharField(max_length=9, choices=Date.MONTH_CHOICES, default=1, null=True)
+    birth_year       = models.IntegerField(validators=[MaxValueValidator(Date.max_value_current_year()+Date.MAX_FUTURE_YEARS), MinValueValidator(Date.MIN_YEAR)], null=True)
+    death_date       = models.DateField(null=True)
+    death_day        = models.IntegerField(validators=[MaxValueValidator(31), MinValueValidator(1)], null=True)      
+    death_month      = models.CharField(max_length=9, choices=Date.MONTH_CHOICES, default=1, null=True)
+    death_year       = models.IntegerField(validators=[MaxValueValidator(Date.max_value_current_year()+Date.MAX_FUTURE_YEARS), MinValueValidator(Date.MIN_YEAR)], null=True)
+    description      = models.CharField(max_length=200, null=True)
+    bio_extract      = models.CharField(max_length=800, null=True)
+    bio_source_url   = models.URLField(null=True)
+```
+
+
 
 ## References
 
