@@ -1,0 +1,11 @@
+delete from myquotes_quotationlastshown;
+delete from myquotes_quotationkeyword;
+delete from myquotes_quotationkeyword_keyword;
+delete from myquotes_eventkeyword_keyword;
+delete from myquotes_eventkeyword_event;
+delete from myquotes_eventauthor;
+delete from myquotes_eventkeyword;
+delete from myquotes_event;
+delete from myquotes_author;
+delete from myquotes_quotation;
+delete from myquotes_keyword;
