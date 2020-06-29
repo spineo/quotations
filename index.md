@@ -946,7 +946,7 @@ Clicking on _Authors_ we can view a list of authors:
 
 ![Admin Authors List](images/admin_authors_list.png)
 
-and the detail, by clicking on an individual author:
+and the detail view, by clicking on an individual author:
 
 ![Admin Author Detail](images/admin_author_detail.png)
 
@@ -954,7 +954,7 @@ As a final step, we can test the years range validations by attempting to save t
 
 ![Admin Author Validation](images/admin_author_validation.png)
 
-Of course, this uncovered an additional problem which is that our main dates did not change (we will need to fix this by re-generating this value dynamically or possibly removing the now unneeded field)
+Of course, this uncovered an additional problem which is that our main date fields did not change (we will need to fix this by re-generating these values dynamically or possibly removing the now unneeded fields)
 
 
 ## References
