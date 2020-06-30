@@ -896,6 +896,8 @@ delete from myquotes_keyword;
 
 From our new _bin_ directory we can now run ___sqlite3 ../data/myquotes.sqlite3 < tables_delete.sql___ and do the cleanup instantly. Of course, our production version integrating manual updates will require backups and some additional logic.
 
+There are other ways to flush data using the manager: ___python3 manage.py help flush___ (though depending how its used will also delete data added during the migration) 
+
 We are now ready to apply our new changes by creating our migrations file:
 ```
 python3 manage.py makemigrations
@@ -991,6 +993,8 @@ class Quotation(models.Model):
         
 ```
 
+For the additional relationship classes that contain the many-to-many attributes additional customization of _admin.py_ will be needed. We will review that next.
+
 ## References
 
 * https://app.lucidchart.com/ (great App for creating ERD diagrams)
@@ -998,3 +1002,4 @@ class Quotation(models.Model):
 * https://en.wikipedia.org/wiki/Main_Page (good source for bio and other information)
 * https://www.goodreads.com/quotes/ (thousands of quotes, categorized by topic)
 * https://docs.djangoproject.com/en/3.0/topics/db/models/
+* https://docs.djangoproject.com/en/3.0/ref/contrib/admin/
