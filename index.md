@@ -979,7 +979,17 @@ And our new pared down _Author_ form:
 
 ![Author Detail Pared](images/admin_author_detail_pared.png)
 
+The two remaining lists to be added to our Admin API are _quotations_ and _keywords_. For quotation, since the additional context is needed, we will return both the quotation and author referenced by the foreign key with some additional formatting (as shown below). The keyword, will simply be, as before, a single value returned.
+```
+class Quotation(models.Model):
+    quotation        = models.CharField(max_length=200, unique=True)
+    source           = models.CharField(max_length=100, null=True)
+    author           = models.ForeignKey(Author, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return '"' + self.quotation + '" - ' + self.author.full_name
+        
+```
 
 ## References
 
