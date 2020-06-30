@@ -954,7 +954,31 @@ As a final step, we can test the years range validations by attempting to save t
 
 ![Admin Author Validation](images/admin_author_validation.png)
 
-Of course, this uncovered an additional problem which is that our main date fields did not change (we will need to fix this by re-generating these values dynamically or possibly removing the now unneeded fields)
+Of course, this uncovered an additional problem which is that our main date fields did not change. To fix this, I removed both of the original date attributes from _models.py_ (_birth_date_ and _death_date_) as their data is now redundant. I also removed the _bio_extract_ attribute as this data  is readily available in the _bio_source_url_ (the _description_, if needed, can also be used to capture summarized biographical data).
+
+As before, after making the changes to the _models.py_ and loader script and deleting the existing data, I re-applied the new migration (below) and re-loaded the data to generate our new pared down authors schema and associated data.
+```
+python3 manage.py makemigrations
+Migrations for 'myquotes':
+  myquotes/migrations/0004_auto_20200630_0925.py
+    - Remove field bio_extract from author
+    - Remove field birth_date from author
+    - Remove field death_date from author
+    - Alter field birth_month on author
+    - Alter field death_month on author
+    - Alter field month on event
+
+python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, myquotes, sessions
+Running migrations:
+  Applying myquotes.0004_auto_20200630_0925... OK
+```
+
+And our new pared down _Author_ form:
+
+![Author Detail Pared](images/admin_author_detail_pared.png)
+
 
 
 ## References
