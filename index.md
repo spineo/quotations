@@ -995,6 +995,19 @@ class Quotation(models.Model):
 
 For the additional relationship classes that contain the many-to-many attributes additional customization of _admin.py_ will be needed. We will review that next.
 
+First, we will further customize our own _Admin API_ by leveraging the existing _admin.ModelAdmin_ built-in class. For _Authors_ we will sort our listing by _full_name_ (descending by default) and add the _Description_ field by creating the _AuthorAdmin_ class in our _admin.py_:
+```
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'description' ]
+    ordering = ['full_name']
+
+admin.site.register(Author, AuthorAdmin)
+```
+The default listing, now displays the sorted list along with the description:
+
+![Author List Description](images/admin_author_desc.png)
+
+
 ## References
 
 * https://app.lucidchart.com/ (great App for creating ERD diagrams)
