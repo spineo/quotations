@@ -5,18 +5,24 @@ from myquotes.models import Author, Quotation, Event, Keyword, QuotationLastShow
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['full_name', 'description' ]
     ordering     = ['full_name']
-
 admin.site.register(Author, AuthorAdmin)
 
-admin.site.register(Quotation)
+class QuotationAdmin(admin.ModelAdmin):
+    ordering     = ['quotation']
+admin.site.register(Quotation, QuotationAdmin)
 
 class EventAdmin(admin.ModelAdmin):
     ordering     = ['event']
-
 admin.site.register(Event, EventAdmin)
 
-admin.site.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    ordering     = ['keyword']
+admin.site.register(Keyword, KeywordAdmin)
+
 admin.site.register(QuotationLastShown)
+
 admin.site.register(QuotationKeyword)
+
 admin.site.register(EventAuthor)
+
 admin.site.register(EventKeyword)
