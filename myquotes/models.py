@@ -77,6 +77,9 @@ class QuotationKeyword(models.Model):
     quotation        = models.OneToOneField(Quotation, on_delete=models.CASCADE)
     keyword          = models.ManyToManyField(Keyword)
 
+    def __str__(self):
+       return self.quotation.quotation
+
 class EventAuthor(models.Model):
     event            = models.OneToOneField(Event, on_delete=models.CASCADE)
     author           = models.ForeignKey(Author, on_delete=models.CASCADE)
