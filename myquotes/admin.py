@@ -16,6 +16,7 @@ class EventAdmin(admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 
 class KeywordAdmin(admin.ModelAdmin):
+    list_display = ['keyword']
     ordering     = ['keyword']
 admin.site.register(Keyword, KeywordAdmin)
 
