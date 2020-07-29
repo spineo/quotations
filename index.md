@@ -1012,6 +1012,33 @@ The default listing, now displays the sorted list along with the description:
 
 The most simple view will be to simply display a random quote along with its source and author every time the Web page refreshes. Once the general look is established, we can go back and add more information to this _detailed view_ as well as modify the backend to incorporate date and keywords.
 
+Our simple view without any formatting is shown below (which will return _quotation_, _source_ (if not null), and _author_):
+```
+from django.http import HttpResponse
+
+from myquotes.models import Quotation
+
+import random
+
+def index(request):
+
+    count       = Quotation.objects.count()
+    rand_num    = random.randint(1, count)
+
+    quotation   = Quotation.objects.all()[rand_num:rand_num+1]
+    
+    return HttpResponse(quotation)
+    
+```
+
+We will also add the new entry to _quotations/urls.py_:
+```
+from myquotes import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('myquotes/', views.index)
+```
 
 
 ## References
