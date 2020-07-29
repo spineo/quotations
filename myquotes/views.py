@@ -1,9 +1,14 @@
-from django.views.generic.list import ListView
+from django.http import HttpResponse
 
-from myquotes.models import Event
+from myquotes.models import Quotation
 
-# 'context_object_name' by default is 'event_list' but can be overriden
-#
-class EventListView(ListView):
-    model = Event
-    template_name = "event.html"
+import random
+
+def index(request):
+
+    count       = Quotation.objects.count()
+    rand_num    = random.randint(1, count)
+
+    quotation   = Quotation.objects.all()[rand_num:rand_num+1]
+
+    return HttpResponse(quotation)

@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from myquotes.views import EventListView
+from myquotes import views
 
 urlpatterns = [
-    path('myquotes/event/', EventListView.as_view()),
     path('admin/', admin.site.urls),
+    path('myquotes/', views.index)
 ]
