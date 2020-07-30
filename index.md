@@ -1012,26 +1012,53 @@ The default listing, now displays the sorted list along with the description:
 
 The most simple view will be to simply display a random quote along with its source and author every time the Web page refreshes. Once the general look is established, we can go back and add more information to this _detailed view_ as well as modify the backend to incorporate date and keywords.
 
-Our simple view without any formatting is shown below (which will return _quotation_, _source_ (if not null), and _author_):
+Our simple view shown below, which will display _quotation_, _source_ (if not null), and _author_, will implement a template and include some simple CSS in order to center the text and give it some additional attributes (i.e., italic, header).
 ```
 from django.http import HttpResponse
-
+  
+from django.template import loader
+        
 from myquotes.models import Quotation
-
+        
 import random
-
+        
 def index(request):
-
+        
     count       = Quotation.objects.count()
     rand_num    = random.randint(1, count)
-
+        
     quotation   = Quotation.objects.all()[rand_num:rand_num+1]
-    
-    return HttpResponse(quotation)
-    
+  
+    template = loader.get_template('index.html')
+    context = {
+        'quotation': quotation,
+    }
+    return HttpResponse(template.render(context, request))
+```
+Our template _myquotes/templates/index.html_ is:
+```
+<html>
+  <style>
+    body {
+        background: white;
+        color: black;
+        font-style: italic;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+  </style>
+  <body>
+    <h1>{{ quotation.0 }}</h1>
+  </body>
+</html>
 ```
 
-We will also add the new entry to _quotations/urls.py_:
+Finally, we will also add the new entry to _quotations/urls.py_:
 ```
 from myquotes import views
 
@@ -1040,6 +1067,9 @@ urlpatterns = [
     path('myquotes/', views.index)
 ```
 
+A sample quotation and author, which will change every time the page is refreshed, is shown below:
+
+![Sample Quotation](images/sample_quotation.png)
 
 ## References
 
