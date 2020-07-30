@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 
+from django.template import loader
+
 from myquotes.models import Quotation
 
 import random
@@ -11,4 +13,8 @@ def index(request):
 
     quotation   = Quotation.objects.all()[rand_num:rand_num+1]
 
-    return HttpResponse(quotation)
+    template = loader.get_template('index.html')
+    context = {
+        'quotation': quotation,
+    }
+    return HttpResponse(template.render(context, request))
