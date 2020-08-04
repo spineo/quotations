@@ -1010,6 +1010,8 @@ The default listing, now displays the sorted list along with the description:
 
 ## The Web Framework Views
 
+### Display Random Quote
+
 The most simple view will be to simply display a random quote along with its source and author every time the Web page refreshes. Once the general look is established, we can go back and add more information to this _detailed view_ as well as modify the backend to incorporate date and keywords.
 
 Our simple view shown below, which will display _quotation_, _source_ (if not null), and _author_, will implement a template and include some simple CSS in order to center the text and give it some additional attributes (i.e., italic, header).
@@ -1070,6 +1072,11 @@ urlpatterns = [
 A sample quotation and author, which will change every time the page is refreshed, is shown below:
 
 ![Sample Quotation](images/sample_quotation.png)
+
+### Display Author Associated Event Driven (i.e., date) Quotation
+
+Next we will display an author associated event driven quotation randomly picked and the associated event based on date. We will test the case where an event is found and the case where one is not found (in which case, like before, we will just display a random quotation)
+
 
 ## References
 
