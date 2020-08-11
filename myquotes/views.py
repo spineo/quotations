@@ -23,22 +23,25 @@ def index(request):
     event_rand_num   = random.randint(1, events_count)
     
     event            = Event.objects.filter(month=month)[event_rand_num:event_rand_num+1]
+    event_pk         = 0
     if event:
         event_pk     = event[0].pk
 
-        # Get associated author
+    # Get associated author
+    #
+    event_author = EventAuthor.objects.filter(event=event_pk)
+    author       = ''
+    quotation    = ''
+    if event_author:
+        author = event_author[0].author
+
+    if author:
+
+        # Get a random quotation associated with that author
         #
-        event_author = EventAuthor.objects.filter(event=event_pk)
-        if event_author:
-            author = event_author[0].author
-
-            # Get a random quotation associated with that author
-            #
-            quotes_count    = Quotation.objects.filter(author=author).count()
-            quotes_rand_num = random.randint(1, quotes_count)
-            quotation       = Quotation.objects.all()[quotes_rand_num:quotes_rand_num+1]
-
-
+        quotes_count    = Quotation.objects.filter(author=author).count()
+        quotes_rand_num = random.randint(1, quotes_count)
+        quotation       = Quotation.objects.all()[quotes_rand_num:quotes_rand_num+1]
 
     # Print the random quotation
     #
