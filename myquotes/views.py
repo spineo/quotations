@@ -17,26 +17,23 @@ def index(request):
     month     = now.month
     day       = now.day
 
-    # Query Event
+    # Initialize
     #
-    events_count     = Event.objects.filter(month=month).count()
-    event_rand_num   = random.randint(1, events_count)
-    
-    event            = Event.objects.filter(month=month)[event_rand_num:event_rand_num+1]
-    event_pk         = 0
-    if event:
-        event_pk     = event[0].pk
+    event          = ''
+    author         = ''
+    quotation      = ''
 
-    # Get associated author
+    # Query Events
     #
-    event_author = EventAuthor.objects.filter(event=event_pk)
-    author       = ''
-    quotation    = ''
+    events_count   = Event.objects.filter(month=month).count()
+    event_rand_num = random.randint(1, events_count)
+
+    event_author   = EventAuthor.objects.select_related().filter(event__month=month)[event_rand_num:event_rand_num+1]
     if event_author:
-        author = event_author[0].author
+        event     = event_author[0].event
+        author    = event_author[0].author
 
-    if author:
-
+    if event and author:
         # Get a random quotation associated with that author
         #
         quotes_count    = Quotation.objects.filter(author=author).count()
@@ -51,10 +48,12 @@ def index(request):
 
         quotation = Quotation.objects.all()[rand_num:rand_num+1]
 
-    # Display the quotation
+    # Display the random quotation
     #
     template = loader.get_template('index.html')
     context = {
+        'event': event,
         'quotation': quotation,
     }
+
     return HttpResponse(template.render(context, request))
