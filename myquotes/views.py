@@ -28,7 +28,7 @@ def index(request):
     events_count   = Event.objects.filter(month=month).count()
     event_rand_num = random.randint(1, events_count)
 
-    event_author   = EventAuthor.objects.select_related().filter(event__month=month)[event_rand_num:event_rand_num+1]
+    event_author   = EventAuthor.objects.select_related().filter(event__month=month)[event_rand_num-1:event_rand_num]
     if event_author:
         event     = event_author[0].event
         author    = event_author[0].author
@@ -38,7 +38,7 @@ def index(request):
         #
         quotes_count    = Quotation.objects.filter(author=author).count()
         quotes_rand_num = random.randint(1, quotes_count)
-        quotation       = Quotation.objects.all()[quotes_rand_num:quotes_rand_num+1]
+        quotation       = Quotation.objects.filter(author=author)[quotes_rand_num-1:quotes_rand_num]
 
     # Print the random quotation
     #
@@ -46,7 +46,7 @@ def index(request):
         all_count = Quotation.objects.count()
         rand_num  = random.randint(1, all_count)
 
-        quotation = Quotation.objects.all()[rand_num:rand_num+1]
+        quotation = Quotation.objects.all()[rand_num-1:rand_num]
 
     # Display the random quotation
     #
