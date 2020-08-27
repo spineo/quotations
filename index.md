@@ -1077,6 +1077,84 @@ A sample quotation and author, which will change every time the page is refreshe
 
 Next we will display an author associated event driven quotation randomly picked and the associated event based on date. We will test the case where an event is found and the case where one is not found (in which case, like before, we will just display a random quotation)
 
+For the view, we will now perform a random query against the _EventAuthor_ model for now at least filtered by month (this way we will ensure that an event and associated author will always be retrieved). Our fall back, like before, is to retrieve a random quote if not event is found (something we will invoke once we filter by day)
+
+```
+def index(request):
+    now = datetime.datetime.now()
+
+    year      = now.year
+    month     = now.month
+    day       = now.day
+
+    # Initialize
+    #
+    event          = ''
+    author         = ''
+    quotation      = ''
+
+    # Query Events   
+    #
+    events_count   = Event.objects.filter(month=month).count()
+    event_rand_num = random.randint(1, events_count)
+        
+    event_author   = EventAuthor.objects.select_related().filter(event__month=month)[event_rand_num-1:event_rand_num]
+    if event_author:
+        event     = event_author[0].event
+        author    = event_author[0].author
+
+    if event and author:
+        # Get a random quotation associated with that author
+        #
+        quotes_count    = Quotation.objects.filter(author=author).count()
+        quotes_rand_num = random.randint(1, quotes_count)
+        quotation       = Quotation.objects.filter(author=author)[quotes_rand_num-1:quotes_rand_num]
+
+    # Print the random quotation
+    #
+    else:
+        all_count = Quotation.objects.count()
+        rand_num  = random.randint(1, all_count)
+
+        quotation = Quotation.objects.all()[rand_num-1:rand_num]
+
+    # Display the random quotation
+    #
+    template = loader.get_template('index.html')
+    context = {
+        'event': event,
+        'quotation': quotation,
+    }
+
+    return HttpResponse(template.render(context, request)) 
+```
+
+We will use the same template we used before but modified to render the event in addition to the quotation:
+
+```
+<html>
+  <style>
+    body {
+        background: white;
+        color: black;
+        font-style: italic;
+        border-radius: 1em;
+        padding: 1em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+  </style>
+  <body>
+    {% if event %}
+    <h1>On this Month: {{ event }}</h1>
+    {% endif %}
+    <h1>{{ quotation.0 }}</h1>
+  </body>
+</html>
+```
 
 ## References
 
