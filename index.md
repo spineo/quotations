@@ -1075,9 +1075,9 @@ A sample quotation and author, which will change every time the page is refreshe
 
 ### Display Author Associated Event Driven (i.e., date) Quotation
 
-Next we will display an author associated event driven quotation randomly picked and the associated event based on date. We will test the case where an event is found and the case where one is not found (in which case, like before, we will just display a random quotation)
+Next we will display an event based on date and the associated author/quotation. We will test the case where an event is found and the case where one is not found (in which case, like before, we will just display a random quotation)
 
-For the view, we will now perform a random query against the _EventAuthor_ model for now at least filtered by month (this way we will ensure that an event and associated author will always be retrieved). Our fall back, like before, is to retrieve a random quote if not event is found (something we will invoke once we filter by day)
+For the view, we will now perform a random query against the _EventAuthor_ model filtered by month (this way we will ensure that an event and associated author will always be retrieved). Our fall-back, like before, is to retrieve a random quote if no event is found (a fall-back we will likely need once we filter by both month and day)
 
 ```
 def index(request):
@@ -1155,6 +1155,10 @@ We will use the same template we used before but modified to render the event in
   </body>
 </html>
 ```
+
+An example display using this new criteria is shown below:
+
+![Event and Quotation](images/event_author_quotation.png)
 
 ## References
 
